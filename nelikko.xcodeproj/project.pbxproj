@@ -15,6 +15,7 @@
 		1E0B5DF31BE2AA5F00766347 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E0B5DF11BE2AA5F00766347 /* LaunchScreen.storyboard */; };
 		1E0B5DFE1BE2AA5F00766347 /* nelikkoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5DFD1BE2AA5F00766347 /* nelikkoTests.swift */; };
 		1E0B5E091BE2AA5F00766347 /* nelikkoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5E081BE2AA5F00766347 /* nelikkoUITests.swift */; };
+		2917FF791BE2C756008AC18B /* Models in Resources */ = {isa = PBXBuildFile; fileRef = 2917FF781BE2C756008AC18B /* Models */; };
 		4799C8A9F2C1646AF4555C48 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185310BE05402A9E08FCA1F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		1E0B5E041BE2AA5F00766347 /* nelikkoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nelikkoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E0B5E081BE2AA5F00766347 /* nelikkoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nelikkoUITests.swift; sourceTree = "<group>"; };
 		1E0B5E0A1BE2AA5F00766347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2917FF781BE2C756008AC18B /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
 		5254590B060E4D33A9CE8DEE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D7CDE3450E1F333DE83E2022 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E185310BE05402A9E08FCA1F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +108,7 @@
 		1E0B5DE41BE2AA5F00766347 /* nelikko */ = {
 			isa = PBXGroup;
 			children = (
+				2917FF781BE2C756008AC18B /* Models */,
 				1E0B5DE51BE2AA5F00766347 /* AppDelegate.swift */,
 				1E0B5DE71BE2AA5F00766347 /* BoardsViewController.swift */,
 				1E0B5DE91BE2AA5F00766347 /* Main.storyboard */,
@@ -263,6 +266,7 @@
 			files = (
 				1E0B5DF31BE2AA5F00766347 /* LaunchScreen.storyboard in Resources */,
 				1E0B5DF01BE2AA5F00766347 /* Assets.xcassets in Resources */,
+				2917FF791BE2C756008AC18B /* Models in Resources */,
 				1E0B5DEB1BE2AA5F00766347 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
