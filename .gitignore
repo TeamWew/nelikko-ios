@@ -26,3 +26,4 @@ xcuserdata
 *.xcuserstate
 xcuserdata/
 Pods/
+.DS_Store
