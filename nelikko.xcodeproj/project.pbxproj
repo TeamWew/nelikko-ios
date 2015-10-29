@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E0B5DE61BE2AA5F00766347 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5DE51BE2AA5F00766347 /* AppDelegate.swift */; };
-		1E0B5DE81BE2AA5F00766347 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5DE71BE2AA5F00766347 /* ViewController.swift */; };
+		1E0B5DE81BE2AA5F00766347 /* BoardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5DE71BE2AA5F00766347 /* BoardsViewController.swift */; };
 		1E0B5DEB1BE2AA5F00766347 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E0B5DE91BE2AA5F00766347 /* Main.storyboard */; };
 		1E0B5DEE1BE2AA5F00766347 /* nelikko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5DEC1BE2AA5F00766347 /* nelikko.xcdatamodeld */; };
 		1E0B5DF01BE2AA5F00766347 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E0B5DEF1BE2AA5F00766347 /* Assets.xcassets */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		1E0B5DE21BE2AA5F00766347 /* nelikko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nelikko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E0B5DE51BE2AA5F00766347 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1E0B5DE71BE2AA5F00766347 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1E0B5DE71BE2AA5F00766347 /* BoardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsViewController.swift; sourceTree = "<group>"; };
 		1E0B5DEA1BE2AA5F00766347 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E0B5DED1BE2AA5F00766347 /* nelikko.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = nelikko.xcdatamodel; sourceTree = "<group>"; };
 		1E0B5DEF1BE2AA5F00766347 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				1E0B5DE51BE2AA5F00766347 /* AppDelegate.swift */,
-				1E0B5DE71BE2AA5F00766347 /* ViewController.swift */,
+				1E0B5DE71BE2AA5F00766347 /* BoardsViewController.swift */,
 				1E0B5DE91BE2AA5F00766347 /* Main.storyboard */,
 				1E0B5DEF1BE2AA5F00766347 /* Assets.xcassets */,
 				1E0B5DF11BE2AA5F00766347 /* LaunchScreen.storyboard */,
@@ -337,7 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E0B5DEE1BE2AA5F00766347 /* nelikko.xcdatamodeld in Sources */,
-				1E0B5DE81BE2AA5F00766347 /* ViewController.swift in Sources */,
+				1E0B5DE81BE2AA5F00766347 /* BoardsViewController.swift in Sources */,
 				1E0B5DE61BE2AA5F00766347 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
