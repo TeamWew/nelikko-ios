@@ -15,6 +15,7 @@
 		1E0B5DF31BE2AA5F00766347 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E0B5DF11BE2AA5F00766347 /* LaunchScreen.storyboard */; };
 		1E0B5DFE1BE2AA5F00766347 /* nelikkoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5DFD1BE2AA5F00766347 /* nelikkoTests.swift */; };
 		1E0B5E091BE2AA5F00766347 /* nelikkoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5E081BE2AA5F00766347 /* nelikkoUITests.swift */; };
+		4799C8A9F2C1646AF4555C48 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185310BE05402A9E08FCA1F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,9 @@
 		1E0B5E041BE2AA5F00766347 /* nelikkoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nelikkoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E0B5E081BE2AA5F00766347 /* nelikkoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nelikkoUITests.swift; sourceTree = "<group>"; };
 		1E0B5E0A1BE2AA5F00766347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5254590B060E4D33A9CE8DEE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D7CDE3450E1F333DE83E2022 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E185310BE05402A9E08FCA1F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4799C8A9F2C1646AF4555C48 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +88,8 @@
 				1E0B5DFC1BE2AA5F00766347 /* nelikkoTests */,
 				1E0B5E071BE2AA5F00766347 /* nelikkoUITests */,
 				1E0B5DE31BE2AA5F00766347 /* Products */,
+				B7F7CE6CB6BE2B8E5ED19BB7 /* Pods */,
+				21DF5C572620ABB0E2AB3966 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +135,23 @@
 			path = nelikkoUITests;
 			sourceTree = "<group>";
 		};
+		21DF5C572620ABB0E2AB3966 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E185310BE05402A9E08FCA1F /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7F7CE6CB6BE2B8E5ED19BB7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D7CDE3450E1F333DE83E2022 /* Pods.debug.xcconfig */,
+				5254590B060E4D33A9CE8DEE /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E0B5E0D1BE2AA5F00766347 /* Build configuration list for PBXNativeTarget "nelikko" */;
 			buildPhases = (
+				D92B5F4AEC326640A89962C3 /* Check Pods Manifest.lock */,
 				1E0B5DDE1BE2AA5F00766347 /* Sources */,
 				1E0B5DDF1BE2AA5F00766347 /* Frameworks */,
 				1E0B5DE01BE2AA5F00766347 /* Resources */,
+				DE583892638ABA2B07AA169C /* Embed Pods Frameworks */,
+				857B683B80906820AEEEEB4D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -255,6 +282,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		857B683B80906820AEEEEB4D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D92B5F4AEC326640A89962C3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DE583892638ABA2B07AA169C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1E0B5DDE1BE2AA5F00766347 /* Sources */ = {
@@ -403,6 +478,7 @@
 		};
 		1E0B5E0E1BE2AA5F00766347 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7CDE3450E1F333DE83E2022 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -415,6 +491,7 @@
 		};
 		1E0B5E0F1BE2AA5F00766347 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5254590B060E4D33A9CE8DEE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -492,6 +569,7 @@
 				1E0B5E0F1BE2AA5F00766347 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1E0B5E101BE2AA5F00766347 /* Build configuration list for PBXNativeTarget "nelikkoTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +578,7 @@
 				1E0B5E121BE2AA5F00766347 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1E0B5E131BE2AA5F00766347 /* Build configuration list for PBXNativeTarget "nelikkoUITests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +587,7 @@
 				1E0B5E151BE2AA5F00766347 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
