@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
+    <entity name="Board" syncable="YES">
+        <attribute name="board" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bump_limit" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="image_limit" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="is_archived" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="max_comment_chars" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="max_filesize" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="max_webm_filezie" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="meta_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pages" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="per_page" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ws_board" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
+        <relationship name="threads" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thread" inverseName="board" inverseEntity="Thread" syncable="YES"/>
+    </entity>
+    <entity name="Post" syncable="YES">
+        <relationship name="thread" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thread" inverseName="posts" inverseEntity="Thread" syncable="YES"/>
+    </entity>
+    <entity name="Thread" syncable="YES">
+        <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Board" inverseName="threads" inverseEntity="Board" syncable="YES"/>
+        <relationship name="posts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Post" inverseName="thread" inverseEntity="Post" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Board" positionX="-45" positionY="0" width="128" height="240"/>
+        <element name="Thread" positionX="-18" positionY="27" width="128" height="75"/>
+        <element name="Post" positionX="9" positionY="54" width="128" height="60"/>
+    </elements>
 </model>
