@@ -18,7 +18,7 @@ class Post: NSManagedObject {
     @NSManaged var closed: Bool
     @NSManaged var name: String
     @NSManaged var com: String // comment
-    @NSManaged var filename: String
+    @NSManaged var filename: string
     @NSManaged var ext: String
     @NSManaged var w: Int16
     @NSManaged var h: Int16
