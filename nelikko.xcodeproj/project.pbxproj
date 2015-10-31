@@ -24,7 +24,7 @@
 		1ED8D9661BE56A4300BA08AE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8D9631BE56A4300BA08AE /* Board.swift */; };
 		1ED8D9671BE56A4300BA08AE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8D9641BE56A4300BA08AE /* Post.swift */; };
 		1ED8D9681BE56A4300BA08AE /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8D9651BE56A4300BA08AE /* Thread.swift */; };
-		4799C8A9F2C1646AF4555C48 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185310BE05402A9E08FCA1F /* Pods.framework */; };
+		4799C8A9F2C1646AF4555C48 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185310BE05402A9E08FCA1F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
