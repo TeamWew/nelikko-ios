@@ -64,6 +64,7 @@
 		1ED8D9631BE56A4300BA08AE /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Board.swift; path = Models/Board.swift; sourceTree = "<group>"; };
 		1ED8D9641BE56A4300BA08AE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Models/Post.swift; sourceTree = "<group>"; };
 		1ED8D9651BE56A4300BA08AE /* Thread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thread.swift; path = Models/Thread.swift; sourceTree = "<group>"; };
+		1ED8D9691BE56DF700BA08AE /* nelikko-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nelikko-Bridging-Header.h"; sourceTree = "<group>"; };
 		5254590B060E4D33A9CE8DEE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D7CDE3450E1F333DE83E2022 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E185310BE05402A9E08FCA1F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +156,7 @@
 		1ED8D9621BE56A3500BA08AE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1ED8D9691BE56DF700BA08AE /* nelikko-Bridging-Header.h */,
 				1ED8D9631BE56A4300BA08AE /* Board.swift */,
 				1ED8D9641BE56A4300BA08AE /* Post.swift */,
 				1ED8D9651BE56A4300BA08AE /* Thread.swift */,
