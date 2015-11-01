@@ -15,16 +15,10 @@
 		1E0B5DF31BE2AA5F00766347 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E0B5DF11BE2AA5F00766347 /* LaunchScreen.storyboard */; };
 		1E0B5DFE1BE2AA5F00766347 /* nelikkoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5DFD1BE2AA5F00766347 /* nelikkoTests.swift */; };
 		1E0B5E091BE2AA5F00766347 /* nelikkoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5E081BE2AA5F00766347 /* nelikkoUITests.swift */; };
-		1E0B5E171BE2E65B00766347 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5E161BE2E65B00766347 /* CoreDataHelper.swift */; };
-		1E0B5E181BE2E65B00766347 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5E161BE2E65B00766347 /* CoreDataHelper.swift */; };
-		1E0B5E191BE2E65B00766347 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5E161BE2E65B00766347 /* CoreDataHelper.swift */; };
-		1E0B5E1B1BE558F100766347 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5E1A1BE558F100766347 /* CoreDataStore.swift */; };
-		1E0B5E1C1BE558F100766347 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5E1A1BE558F100766347 /* CoreDataStore.swift */; };
-		1E0B5E1D1BE558F100766347 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5E1A1BE558F100766347 /* CoreDataStore.swift */; };
 		1ED8D9661BE56A4300BA08AE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8D9631BE56A4300BA08AE /* Board.swift */; };
 		1ED8D9671BE56A4300BA08AE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8D9641BE56A4300BA08AE /* Post.swift */; };
 		1ED8D9681BE56A4300BA08AE /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8D9651BE56A4300BA08AE /* Thread.swift */; };
-		4799C8A9F2C1646AF4555C48 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185310BE05402A9E08FCA1F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		4799C8A9F2C1646AF4555C48 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185310BE05402A9E08FCA1F /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +53,6 @@
 		1E0B5E041BE2AA5F00766347 /* nelikkoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nelikkoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E0B5E081BE2AA5F00766347 /* nelikkoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nelikkoUITests.swift; sourceTree = "<group>"; };
 		1E0B5E0A1BE2AA5F00766347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1E0B5E161BE2E65B00766347 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
-		1E0B5E1A1BE558F100766347 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		1ED8D9631BE56A4300BA08AE /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Board.swift; path = Models/Board.swift; sourceTree = "<group>"; };
 		1ED8D9641BE56A4300BA08AE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Models/Post.swift; sourceTree = "<group>"; };
 		1ED8D9651BE56A4300BA08AE /* Thread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thread.swift; path = Models/Thread.swift; sourceTree = "<group>"; };
@@ -124,8 +116,6 @@
 				1ED8D9621BE56A3500BA08AE /* Models */,
 				1E0B5DE51BE2AA5F00766347 /* AppDelegate.swift */,
 				1E0B5DE71BE2AA5F00766347 /* BoardsViewController.swift */,
-				1E0B5E161BE2E65B00766347 /* CoreDataHelper.swift */,
-				1E0B5E1A1BE558F100766347 /* CoreDataStore.swift */,
 				1E0B5DE91BE2AA5F00766347 /* Main.storyboard */,
 				1E0B5DEF1BE2AA5F00766347 /* Assets.xcassets */,
 				1E0B5DF11BE2AA5F00766347 /* LaunchScreen.storyboard */,
@@ -366,12 +356,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E0B5DEE1BE2AA5F00766347 /* nelikko.xcdatamodeld in Sources */,
-				1E0B5E171BE2E65B00766347 /* CoreDataHelper.swift in Sources */,
 				1ED8D9661BE56A4300BA08AE /* Board.swift in Sources */,
 				1E0B5DE81BE2AA5F00766347 /* BoardsViewController.swift in Sources */,
 				1E0B5DE61BE2AA5F00766347 /* AppDelegate.swift in Sources */,
 				1ED8D9671BE56A4300BA08AE /* Post.swift in Sources */,
-				1E0B5E1B1BE558F100766347 /* CoreDataStore.swift in Sources */,
 				1ED8D9681BE56A4300BA08AE /* Thread.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,9 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E0B5E1C1BE558F100766347 /* CoreDataStore.swift in Sources */,
 				1E0B5DFE1BE2AA5F00766347 /* nelikkoTests.swift in Sources */,
-				1E0B5E181BE2E65B00766347 /* CoreDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,9 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E0B5E1D1BE558F100766347 /* CoreDataStore.swift in Sources */,
 				1E0B5E091BE2AA5F00766347 /* nelikkoUITests.swift in Sources */,
-				1E0B5E191BE2E65B00766347 /* CoreDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
