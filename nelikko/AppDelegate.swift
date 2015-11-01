@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import AERecord
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        do {
+            try AERecord.loadCoreDataStack()
+        } catch {
+            print(error)
+        }
+        
         return true
     }
 
@@ -29,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        self.cdh.saveContext()
+        self.saveContext()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -41,21 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.gThread();
     }
     
-    // #pragma mark - Core Data Helper
-    
-    lazy var cdstore: CoreDataStore = {
-        let cdstore = CoreDataStore()
-        return cdstore
-    }()
-    
-    lazy var cdh: CoreDataHelper = {
-        let cdh = CoreDataHelper()
-        return cdh
-    }()
-    
     // Create G THREAD
     func gThread() {
-
+        /*
         let entityDescription = NSEntityDescription.entityForName("Board",
             inManagedObjectContext: self.cdh.backgroundContext!)
         
@@ -67,14 +62,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         self.cdh.saveContext(self.cdh.backgroundContext!)
-        
+        */
+        Board.createWithAttributes(["board": "g"])
+        AERecord.saveContextAndWait()
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        //self.saveContext()
-        self.cdh.saveContext()
+        self.saveContext()
     }
 
     // MARK: - Core Data stack
