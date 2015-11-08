@@ -143,7 +143,11 @@
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="nelikko" id="3jC-OK-isA">
-                        <barButtonItem key="rightBarButtonItem" title="☰" id="oKM-Tl-deT"/>
+                        <barButtonItem key="rightBarButtonItem" title="☰" id="oKM-Tl-deT">
+                            <connections>
+                                <segue destination="57a-hT-1Ht" kind="presentation" id="e61-md-pOS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="navBar" destination="3jC-OK-isA" id="4Lx-de-IuY"/>
@@ -151,29 +155,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVC-Ad-ZrL" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1422" y="290"/>
+            <point key="canvasLocation" x="1430" y="296"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Tdx-k9-oAi">
             <objects>
                 <tableViewController id="rFH-Mw-iHm" userLabel="Settings" customClass="SettingsViewController" customModule="nelikko" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vTi-ZK-YIQ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vTi-ZK-YIQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yGP-e8-Ety">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yGP-e8-Ety" id="xCM-AK-33B">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                            </tableViewCell>
-                        </prototypes>
+                        <sections>
+                            <tableViewSection id="T3K-aO-SQd">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yGP-e8-Ety">
+                                        <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yGP-e8-Ety" id="xCM-AK-33B">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Webview on 404" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oL-vT-SN4">
+                                                    <rect key="frame" x="8" y="11" width="214" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G6Y-Gt-RBc">
+                                                    <rect key="frame" x="309" y="6" width="51" height="31"/>
+                                                    <animations/>
+                                                </switch>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="rFH-Mw-iHm" id="SeA-vx-ct4"/>
                             <outlet property="delegate" destination="rFH-Mw-iHm" id="n3w-cs-xYE"/>
@@ -182,14 +203,14 @@
                     <navigationItem key="navigationItem" title="nelikko" id="fNq-dZ-fvk">
                         <barButtonItem key="rightBarButtonItem" title="X" id="540-oc-4PY">
                             <connections>
-                                <action selector="testLabel:" destination="rFH-Mw-iHm" id="PHD-KW-lnd"/>
+                                <action selector="dismissModal:" destination="rFH-Mw-iHm" id="vO0-6D-BT2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2O-u0-gMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2163" y="-887"/>
+            <point key="canvasLocation" x="1633" y="1229"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XbX-u9-BVm">
@@ -206,7 +227,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SE-zD-mjc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1307" y="-887"/>
+            <point key="canvasLocation" x="633" y="1223"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="e61-md-pOS"/>
+    </inferredMetricsTieBreakers>
 </document>
