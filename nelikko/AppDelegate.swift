@@ -63,8 +63,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.cdh.saveContext(self.cdh.backgroundContext!)
         */
-        Board.createWithAttributes(["board": "g"])
-        AERecord.saveContextAndWait()
+        //Board.createWithAttributes(["board": "g"])
+        //AERecord.saveContextAndWait()
     }
 
     func applicationWillTerminate(application: UIApplication) {
