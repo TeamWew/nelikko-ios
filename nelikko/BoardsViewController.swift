@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 
+
+
 class BoardsViewController: UITableViewController {
     var boards: Array<String> = []
     override func viewDidLoad() {
@@ -44,6 +46,14 @@ class BoardsViewController: UITableViewController {
         let cell = UITableViewCell()
         cell.textLabel?.text = self.boards[indexPath.row]
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //CODE TO BE RUN ON CELL TOUCH
+        print("clicked cell")
+
+        performSegueWithIdentifier("ThreadsSegue", sender: self)
+
     }
 }
 
