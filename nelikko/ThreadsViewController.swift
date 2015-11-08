@@ -10,9 +10,15 @@ import UIKit
 import Alamofire
 
 class ThreadsViewController: UITableViewController {
-    var threads: Array<String> = []
+    var board: Board?
+    var threads = [Thread]()
+
+    @IBOutlet var navBar: UINavigationItem!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navBar.title = self.board?.getTitleString()
+
         Alamofire.request(.GET, "https://a.4cdn.org/g/threads.json")
             .responseJSON { response in
                 if let JSON = response.result.value {
@@ -63,7 +69,7 @@ class ThreadsViewController: UITableViewController {
     // Click function for cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = self.threads[indexPath.row]
+        //cell.textLabel?.text = self.threads[indexPath.row]
         return cell
     }
 }
