@@ -40,6 +40,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="609" y="290"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nwn-mD-d8Z">
@@ -136,10 +137,13 @@
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="nelikko" id="3jC-OK-isA"/>
+                    <connections>
+                        <outlet property="navBar" destination="3jC-OK-isA" id="4Lx-de-IuY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVC-Ad-ZrL" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1388" y="325"/>
+            <point key="canvasLocation" x="1420.5" y="290"/>
         </scene>
     </scenes>
 </document>
