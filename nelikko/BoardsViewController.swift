@@ -56,9 +56,12 @@ class BoardsViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destinationVC = segue.destinationViewController as! ThreadsViewController
-        destinationVC.board = self.selectedBoard
-        self.selectedBoard = nil
+        if (segue.identifier == "ThreadSegue")
+        {
+            let destinationVC = segue.destinationViewController as! ThreadsViewController
+            destinationVC.board = self.selectedBoard
+            self.selectedBoard = nil
+        }
     }
 }
 

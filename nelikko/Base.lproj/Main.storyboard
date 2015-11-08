@@ -33,7 +33,13 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="nelikko" id="z1N-Uk-Zdi"/>
+                    <navigationItem key="navigationItem" title="nelikko" id="z1N-Uk-Zdi">
+                        <barButtonItem key="rightBarButtonItem" title="☰" id="kwr-OW-aqc">
+                            <connections>
+                                <segue destination="57a-hT-1Ht" kind="presentation" id="7wT-NZ-hw4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="eAH-u5-PYp" kind="show" identifier="ThreadsSegue" id="vSl-pC-hys"/>
                     </connections>
@@ -136,14 +142,71 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="nelikko" id="3jC-OK-isA"/>
+                    <navigationItem key="navigationItem" title="nelikko" id="3jC-OK-isA">
+                        <barButtonItem key="rightBarButtonItem" title="☰" id="oKM-Tl-deT"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="navBar" destination="3jC-OK-isA" id="4Lx-de-IuY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVC-Ad-ZrL" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1420.5" y="290"/>
+            <point key="canvasLocation" x="1422" y="290"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="Tdx-k9-oAi">
+            <objects>
+                <tableViewController id="rFH-Mw-iHm" userLabel="Settings" customClass="SettingsViewController" customModule="nelikko" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vTi-ZK-YIQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yGP-e8-Ety">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yGP-e8-Ety" id="xCM-AK-33B">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rFH-Mw-iHm" id="SeA-vx-ct4"/>
+                            <outlet property="delegate" destination="rFH-Mw-iHm" id="n3w-cs-xYE"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="nelikko" id="fNq-dZ-fvk">
+                        <barButtonItem key="rightBarButtonItem" title="X" id="540-oc-4PY">
+                            <connections>
+                                <action selector="testLabel:" destination="rFH-Mw-iHm" id="PHD-KW-lnd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h2O-u0-gMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2163" y="-887"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XbX-u9-BVm">
+            <objects>
+                <navigationController id="57a-hT-1Ht" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TOd-uf-0d4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rFH-Mw-iHm" kind="relationship" relationship="rootViewController" id="mRV-Ae-RTE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4SE-zD-mjc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="-887"/>
         </scene>
     </scenes>
 </document>
