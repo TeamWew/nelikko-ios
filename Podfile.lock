@@ -1,0 +1,16 @@
+PODS:
+  - AECoreDataUI (2.0.0)
+  - AERecord (2.0.0)
+  - Alamofire (3.1.0)
+
+DEPENDENCIES:
+  - AECoreDataUI
+  - AERecord
+  - Alamofire (~> 3.0)
+
+SPEC CHECKSUMS:
+  AECoreDataUI: 4a52ae2d9cd00cb2a6d5ecf20f0405de7c643134
+  AERecord: 63313541906da457a51d808c1e0244b494dbb59f
+  Alamofire: 415bd7f56197722978759078486689f7ef913dce
+
+COCOAPODS: 0.39.0
