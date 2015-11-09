@@ -15,14 +15,14 @@ class ThreadOPCell : UITableViewCell {
     @IBOutlet var opImageView: UIImageView!
     var imageUrl: String?
 
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
     }
 
 }
