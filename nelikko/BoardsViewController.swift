@@ -12,24 +12,17 @@ import Alamofire
 class BoardsViewController: UITableViewController {
 
     var boards = [Board]()
+    let API: BoardsAPI = BoardsAPI()
     var selectedBoard: Board?
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Alamofire.request(.GET, "https://a.4cdn.org/boards.json")
-            .responseJSON { response in
-                if let JSON = response.result.value {
-                    let things = JSON["boards"] as? NSArray
-                    for item in things! {
-                        let board = item as! Dictionary<String, AnyObject>
-                        let initial: String = board["board"] as! String!
-                        let title: String = board["title"]  as! String!
-                        self.boards.append(Board(board: initial, title: title))
-                    }
-                    self.tableView.reloadData()
-                }
+        func getBoardsCallback(boards: Array<Board>) {
+            self.boards = boards
+            self.tableView.reloadData()
         }
+        API.getAllWithCallBack(getBoardsCallback)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -54,9 +47,9 @@ class BoardsViewController: UITableViewController {
         performSegueWithIdentifier("ThreadsSegue", sender: self)
         self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "ThreadSegue")
+        if (segue.identifier == "ThreadsSegue")
         {
             let destinationVC = segue.destinationViewController as! ThreadsViewController
             destinationVC.board = self.selectedBoard
