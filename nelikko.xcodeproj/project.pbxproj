@@ -21,6 +21,7 @@
 		1ED8D96F1BE59C2B00BA08AE /* ThreadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8D96E1BE59C2B00BA08AE /* ThreadsViewController.swift */; };
 		1ED8D9711BE59DAD00BA08AE /* CatalogueThread.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ED8D9701BE59DAD00BA08AE /* CatalogueThread.xib */; };
 		1EE7E82D1BEFCC8900A8A4A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E82C1BEFCC8900A8A4A7 /* SettingsViewController.swift */; };
+		1EE7E82F1BF00E5400A8A4A7 /* ZooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E82E1BF00E5400A8A4A7 /* ZooViewController.swift */; };
 		4799C8A9F2C1646AF4555C48 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185310BE05402A9E08FCA1F /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		1ED8D96E1BE59C2B00BA08AE /* ThreadsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadsViewController.swift; sourceTree = "<group>"; };
 		1ED8D9701BE59DAD00BA08AE /* CatalogueThread.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatalogueThread.xib; sourceTree = "<group>"; };
 		1EE7E82C1BEFCC8900A8A4A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1EE7E82E1BF00E5400A8A4A7 /* ZooViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZooViewController.swift; sourceTree = "<group>"; };
 		5254590B060E4D33A9CE8DEE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D7CDE3450E1F333DE83E2022 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E185310BE05402A9E08FCA1F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 				1E0B5DE71BE2AA5F00766347 /* BoardsViewController.swift */,
 				1ED8D96E1BE59C2B00BA08AE /* ThreadsViewController.swift */,
 				1EE7E82C1BEFCC8900A8A4A7 /* SettingsViewController.swift */,
+				1EE7E82E1BF00E5400A8A4A7 /* ZooViewController.swift */,
 				1E0B5DE91BE2AA5F00766347 /* Main.storyboard */,
 				1E0B5DEF1BE2AA5F00766347 /* Assets.xcassets */,
 				1E0B5DF11BE2AA5F00766347 /* LaunchScreen.storyboard */,
@@ -366,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E0B5DEE1BE2AA5F00766347 /* nelikko.xcdatamodeld in Sources */,
+				1EE7E82F1BF00E5400A8A4A7 /* ZooViewController.swift in Sources */,
 				1ED8D9661BE56A4300BA08AE /* Board.swift in Sources */,
 				1E0B5DE81BE2AA5F00766347 /* BoardsViewController.swift in Sources */,
 				1E0B5DE61BE2AA5F00766347 /* AppDelegate.swift in Sources */,

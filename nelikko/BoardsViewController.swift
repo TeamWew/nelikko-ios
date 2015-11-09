@@ -63,5 +63,9 @@ class BoardsViewController: UITableViewController {
             self.selectedBoard = nil
         }
     }
+    
+    @IBAction func testshit(sender: AnyObject) {
+        performSegueWithIdentifier("ZooSegue", sender: sender)
+    }
 }
 
