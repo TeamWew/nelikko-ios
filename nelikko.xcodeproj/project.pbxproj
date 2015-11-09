@@ -22,7 +22,9 @@
 		1ED8D9711BE59DAD00BA08AE /* CatalogueThread.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ED8D9701BE59DAD00BA08AE /* CatalogueThread.xib */; };
 		1EE7E82D1BEFCC8900A8A4A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E82C1BEFCC8900A8A4A7 /* SettingsViewController.swift */; };
 		1EE7E82F1BF00E5400A8A4A7 /* ZooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E82E1BF00E5400A8A4A7 /* ZooViewController.swift */; };
-		4799C8A9F2C1646AF4555C48 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185310BE05402A9E08FCA1F /* Pods.framework */; };
+		29B88EF71BF136270072DE6A /* BoardsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B88EF61BF136270072DE6A /* BoardsAPI.swift */; };
+		29B88EF91BF13B4B0072DE6A /* ThreadOPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B88EF81BF13B4B0072DE6A /* ThreadOPCell.swift */; };
+		4799C8A9F2C1646AF4555C48 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185310BE05402A9E08FCA1F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		1ED8D9701BE59DAD00BA08AE /* CatalogueThread.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatalogueThread.xib; sourceTree = "<group>"; };
 		1EE7E82C1BEFCC8900A8A4A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1EE7E82E1BF00E5400A8A4A7 /* ZooViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZooViewController.swift; sourceTree = "<group>"; };
+		29B88EF61BF136270072DE6A /* BoardsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardsAPI.swift; sourceTree = "<group>"; };
+		29B88EF81BF13B4B0072DE6A /* ThreadOPCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadOPCell.swift; sourceTree = "<group>"; };
 		5254590B060E4D33A9CE8DEE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D7CDE3450E1F333DE83E2022 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E185310BE05402A9E08FCA1F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +125,7 @@
 		1E0B5DE41BE2AA5F00766347 /* nelikko */ = {
 			isa = PBXGroup;
 			children = (
+				29B88EF51BF136190072DE6A /* API */,
 				1ED8D9621BE56A3500BA08AE /* Models */,
 				1E0B5DE51BE2AA5F00766347 /* AppDelegate.swift */,
 				1E0B5DE71BE2AA5F00766347 /* BoardsViewController.swift */,
@@ -128,6 +133,7 @@
 				1EE7E82C1BEFCC8900A8A4A7 /* SettingsViewController.swift */,
 				1EE7E82E1BF00E5400A8A4A7 /* ZooViewController.swift */,
 				1E0B5DE91BE2AA5F00766347 /* Main.storyboard */,
+				29B88EF81BF13B4B0072DE6A /* ThreadOPCell.swift */,
 				1E0B5DEF1BE2AA5F00766347 /* Assets.xcassets */,
 				1E0B5DF11BE2AA5F00766347 /* LaunchScreen.storyboard */,
 				1E0B5DF41BE2AA5F00766347 /* Info.plist */,
@@ -172,6 +178,14 @@
 				E185310BE05402A9E08FCA1F /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		29B88EF51BF136190072DE6A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				29B88EF61BF136270072DE6A /* BoardsAPI.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 		B7F7CE6CB6BE2B8E5ED19BB7 /* Pods */ = {
@@ -371,10 +385,12 @@
 				1E0B5DEE1BE2AA5F00766347 /* nelikko.xcdatamodeld in Sources */,
 				1EE7E82F1BF00E5400A8A4A7 /* ZooViewController.swift in Sources */,
 				1ED8D9661BE56A4300BA08AE /* Board.swift in Sources */,
+				29B88EF71BF136270072DE6A /* BoardsAPI.swift in Sources */,
 				1E0B5DE81BE2AA5F00766347 /* BoardsViewController.swift in Sources */,
 				1E0B5DE61BE2AA5F00766347 /* AppDelegate.swift in Sources */,
 				1ED8D9671BE56A4300BA08AE /* Post.swift in Sources */,
 				1ED8D96F1BE59C2B00BA08AE /* ThreadsViewController.swift in Sources */,
+				29B88EF91BF13B4B0072DE6A /* ThreadOPCell.swift in Sources */,
 				1ED8D9681BE56A4300BA08AE /* Thread.swift in Sources */,
 				1EE7E82D1BEFCC8900A8A4A7 /* SettingsViewController.swift in Sources */,
 			);
