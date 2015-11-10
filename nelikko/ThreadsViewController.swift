@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 
 class ThreadsViewController: UITableViewController {
+    let API: ThreadAPI = ThreadAPI()
     var board: Board?
     var threads = [Thread]()
 
@@ -18,40 +19,11 @@ class ThreadsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navBar.title = self.board?.getTitleString()
-
-        Alamofire.request(.GET, "https://a.4cdn.org/g/threads.json")
-            .responseJSON { response in
-                if let JSON = response.result.value {
-                    let pages = JSON as? NSArray
-                    for page in pages! {
-                        for thread in page["threads"] as! NSArray {
-                            if let t = thread as? NSDictionary {
-                                let no = t["no"]
-                                
-                                // This is how we probably want to go.
-                                //let last = t["last_modified"]
-                                //let newThread = FCThread(board: "g", num: no, lastModified: last)
-                                //self.threads.append(newThread)
-                                
-                                print(no)
-                                
-                            }
-                        }
-                        /*
-                        let page = page as! Dictionary<String, AnyObject>
-                        
-                        let board = item as! Dictionary<String, AnyObject>
-                        let initial: String = board["board"] as! String!
-                        let title: String = board["title"]  as! String!
-                        let boardName: String = "/" + initial + "/ - " + title
-                        self.threads.append(boardName)
-                        self.tableView.reloadData()
-                        */
-                    }
-                    
-                }
+        func getThreadsCallback(threads: Array<Thread>) {
+            self.threads = threads
+            self.tableView.reloadData()
         }
-        // Do any additional setup after loading the view, typically from a nib.
+        API.getAllForBoardWithCallback(self.board!.board, completion: getThreadsCallback)
     }
     
 
@@ -66,10 +38,11 @@ class ThreadsViewController: UITableViewController {
         return self.threads.count
     }
     
-    // Click function for cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        //cell.textLabel?.text = self.threads[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("ThreadCell", forIndexPath: indexPath) as! ThreadOPCell
+
+        let requestedThread = self.threads[indexPath.row]
+        cell.firstComment?.text = requestedThread.op.com
         return cell
     }
 }
