@@ -6,11 +6,12 @@
 //  Copyright © 2015 TeamWew. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 class Post {
     
-    var no: Int16 // numma
+    var no: Int // numma
     var sticky: Bool
     var closed: Bool
     var name: String
@@ -21,7 +22,7 @@ class Post {
     var h: Int16
     var tn_w: Int16 // thumbnail
     var tn_h: Int16
-    var tim: Int16 // renamed filename epoch
+    var tim: Int // renamed filename epoch
     var time: Int16 // post epoch
     var md5: String
     var fsize: Int16
@@ -33,8 +34,11 @@ class Post {
     var replies: Int16 // reply count
     var images: Int16 // image count
     
-    init(no:Int16,sticky: Bool, closed: Bool, name: String, com: String, filename: String, ext: String,
-        w: Int16, h: Int16, tn_w: Int16, tn_h: Int16, tim: Int16, time: Int16, md5: String, fsize: Int16,
+    var thumbnail: UIImage?
+    var postImage: UIImage?
+    
+    init(no: Int, sticky: Bool, closed: Bool, name: String, com: String, filename: String, ext: String,
+        w: Int16, h: Int16, tn_w: Int16, tn_h: Int16, tim: Int, time: Int16, md5: String, fsize: Int16,
         resto: Int16, capcode: String, bumplimit: Bool, imagelimit: Bool, semantic_url: String, replies: Int16, images: Int16) {
             self.no = no
             self.sticky = sticky
@@ -58,8 +62,31 @@ class Post {
             self.semantic_url  = semantic_url
             self.replies = replies
             self.images = images
-            
-            
+    }
+    
+    init(no: Int, com: String, tim: Int) {
+        self.no = no
+        self.sticky = false
+        self.closed = false
+        self.name = ""
+        self.com = com
+        self.filename = ""
+        self.ext = ""
+        self.w = 0
+        self.h = 0
+        self.tn_w = 0
+        self.tn_h = 0
+        self.tim = tim
+        self.time = 0
+        self.md5 = ""
+        self.fsize = 0
+        self.resto = 0
+        self.capcode = "" // not found in OP
+        self.bumplimit = false
+        self.imagelimit = false
+        self.semantic_url = ""
+        self.replies = 0
+        self.images = 0
     }
     
     
