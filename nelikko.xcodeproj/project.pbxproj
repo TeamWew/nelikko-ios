@@ -24,6 +24,7 @@
 		1EE7E82F1BF00E5400A8A4A7 /* ZooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E82E1BF00E5400A8A4A7 /* ZooViewController.swift */; };
 		29B88EF71BF136270072DE6A /* BoardsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B88EF61BF136270072DE6A /* BoardsAPI.swift */; };
 		29B88EF91BF13B4B0072DE6A /* ThreadOPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B88EF81BF13B4B0072DE6A /* ThreadOPCell.swift */; };
+		29B88EFB1BF1453A0072DE6A /* ThreadAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B88EFA1BF1453A0072DE6A /* ThreadAPI.swift */; };
 		4799C8A9F2C1646AF4555C48 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185310BE05402A9E08FCA1F /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		1EE7E82E1BF00E5400A8A4A7 /* ZooViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZooViewController.swift; sourceTree = "<group>"; };
 		29B88EF61BF136270072DE6A /* BoardsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardsAPI.swift; sourceTree = "<group>"; };
 		29B88EF81BF13B4B0072DE6A /* ThreadOPCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadOPCell.swift; sourceTree = "<group>"; };
+		29B88EFA1BF1453A0072DE6A /* ThreadAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadAPI.swift; sourceTree = "<group>"; };
 		5254590B060E4D33A9CE8DEE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D7CDE3450E1F333DE83E2022 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E185310BE05402A9E08FCA1F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				29B88EF61BF136270072DE6A /* BoardsAPI.swift */,
+				29B88EFA1BF1453A0072DE6A /* ThreadAPI.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B88EFB1BF1453A0072DE6A /* ThreadAPI.swift in Sources */,
 				1E0B5DEE1BE2AA5F00766347 /* nelikko.xcdatamodeld in Sources */,
 				1EE7E82F1BF00E5400A8A4A7 /* ZooViewController.swift in Sources */,
 				1ED8D9661BE56A4300BA08AE /* Board.swift in Sources */,
