@@ -8,14 +8,16 @@
 
 import Foundation
 
-import CoreData
+class Thread {
+    var op: Post
+    var no: Int16?
+    var last_modified: Int16?
+    var tim: String?
 
-@objc(Thread)
-class Thread: NSManagedObject {
+    var board: Board? // Relation
+    var posts: Array<Post>? // Relation
     
-    @NSManaged var no: Int16
-    @NSManaged var last_modified: Int16
-
-    @NSManaged var board: NSSet // Relation
-    @NSManaged var posts: NSSet // Relation
+    init(op: Post) {
+        self.op = op
+    }
 }
