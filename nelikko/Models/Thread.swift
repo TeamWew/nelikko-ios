@@ -10,14 +10,16 @@ import Foundation
 
 class Thread {
     var op: Post
-    var no: Int16?
-    var last_modified: Int16?
+    var no: Int
+    var last_modified: Int?
     var tim: String?
 
-    var board: Board? // Relation
+    var board: Board
     var posts: Array<Post>? // Relation
     
-    init(op: Post) {
+    init(op: Post, board: Board, no: Int) {
         self.op = op
+        self.board = board
+        self.no = no
     }
 }
