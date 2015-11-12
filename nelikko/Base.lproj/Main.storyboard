@@ -318,10 +318,10 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="Zsk-V9-uuy"/>
-                                            <exclude reference="gXd-Sv-AqM"/>
                                             <exclude reference="29K-Hy-bdu"/>
                                             <exclude reference="zYf-fd-0YX"/>
+                                            <exclude reference="Zsk-V9-uuy"/>
+                                            <exclude reference="gXd-Sv-AqM"/>
                                             <exclude reference="PeI-Zp-Yie"/>
                                             <exclude reference="TFq-VF-kIW"/>
                                             <exclude reference="XTo-y7-mdO"/>
@@ -332,10 +332,10 @@
                                     </variation>
                                     <variation key="widthClass=compact">
                                         <mask key="constraints">
-                                            <include reference="Zsk-V9-uuy"/>
-                                            <include reference="gXd-Sv-AqM"/>
                                             <include reference="29K-Hy-bdu"/>
                                             <include reference="zYf-fd-0YX"/>
+                                            <include reference="Zsk-V9-uuy"/>
+                                            <include reference="gXd-Sv-AqM"/>
                                             <include reference="PeI-Zp-Yie"/>
                                             <include reference="TFq-VF-kIW"/>
                                             <include reference="XTo-y7-mdO"/>
@@ -413,6 +413,32 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="59Z-hl-WYs">
+                                        <rect key="frame" x="0.0" y="108" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="59Z-hl-WYs" id="XeU-Ft-4LK">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Filter NSFW boards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkn-bA-P5a">
+                                                    <rect key="frame" x="8" y="11" width="214" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vcw-Jc-KTJ">
+                                                    <rect key="frame" x="309" y="6" width="51" height="31"/>
+                                                    <animations/>
+                                                    <connections>
+                                                        <action selector="nsfwFilterClicked:" destination="rFH-Mw-iHm" eventType="valueChanged" id="iHJ-Ys-HQ7"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -428,6 +454,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nsfwFilter" destination="Vcw-Jc-KTJ" id="Z8e-6e-duv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2O-u0-gMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
