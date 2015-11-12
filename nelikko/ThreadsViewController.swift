@@ -13,6 +13,7 @@ class ThreadsViewController: UITableViewController {
     let API: ThreadAPI = ThreadAPI()
     var board: Board?
     var threads = [Thread]()
+    var selectedThread: Thread?
 
     @IBOutlet var navBar: UINavigationItem!
 
@@ -23,26 +24,38 @@ class ThreadsViewController: UITableViewController {
             self.threads = threads
             self.tableView.reloadData()
         }
-        API.getAllForBoardWithCallback(self.board!.board, completion: getThreadsCallback)
+        API.getAll(forBoard: self.board!, withCallback: getThreadsCallback)
     }
-    
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.threads.count
     }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedThread = self.threads[indexPath.row]
+        performSegueWithIdentifier("PostsSegue", sender: self)
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "PostsSegue")
+        {
+            let destinationVC = segue.destinationViewController as! PostsViewController
+            destinationVC.thread = self.selectedThread
+            self.selectedThread = nil
+        }
+    }
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ThreadCell", forIndexPath: indexPath) as! ThreadOPCell
 
         let requestedThread = self.threads[indexPath.row]
-        cell.firstComment?.text = requestedThread.op.com
+        cell.firstComment?.attributedText = requestedThread.op.getAttributedComment()
         return cell
     }
 }

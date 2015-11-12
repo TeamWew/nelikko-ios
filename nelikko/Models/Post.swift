@@ -22,7 +22,7 @@ class Post {
     var h: Int16
     var tn_w: Int16 // thumbnail
     var tn_h: Int16
-    var tim: Int // renamed filename epoch
+    var tim: Int? // renamed filename epoch
     var time: Int16 // post epoch
     var md5: String
     var fsize: Int16
@@ -87,6 +87,40 @@ class Post {
         self.semantic_url = ""
         self.replies = 0
         self.images = 0
+    }
+    init(no: Int, com: String) {
+        self.no = no
+        self.sticky = false
+        self.closed = false
+        self.name = ""
+        self.com = com
+        self.filename = ""
+        self.ext = ""
+        self.w = 0
+        self.h = 0
+        self.tn_w = 0
+        self.tn_h = 0
+        self.tim = 0
+        self.time = 0
+        self.md5 = ""
+        self.fsize = 0
+        self.resto = 0
+        self.capcode = "" // not found in OP
+        self.bumplimit = false
+        self.imagelimit = false
+        self.semantic_url = ""
+        self.replies = 0
+        self.images = 0
+    }
+
+    func getAttributedComment() -> NSAttributedString? {
+        let encodedData = self.com.dataUsingEncoding(NSUTF8StringEncoding)!
+        do {
+            return try NSAttributedString(data: encodedData, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute:NSUTF8StringEncoding], documentAttributes: nil)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+            return nil
+        }
     }
     
     
