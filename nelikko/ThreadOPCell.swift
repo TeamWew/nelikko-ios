@@ -13,8 +13,13 @@ class ThreadOPCell : UITableViewCell {
 
     @IBOutlet var firstComment: UILabel!
     @IBOutlet var opImageView: UIImageView!
-    var imageUrl: String?
+    @IBOutlet var subject: UILabel!
+    @IBOutlet var repliesLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
 
+
+
+    var imageUrl: String?
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -56,6 +56,9 @@ class ThreadsViewController: UITableViewController {
 
         let requestedThread = self.threads[indexPath.row]
         cell.firstComment?.attributedText = requestedThread.op.getAttributedComment()
+        cell.subject?.text = requestedThread.op.sub
+        cell.repliesLabel?.text = String(requestedThread.op.replies) + " replies"
+        cell.nameLabel?.text = requestedThread.op.name
         return cell
     }
 }

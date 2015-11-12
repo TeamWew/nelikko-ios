@@ -207,24 +207,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="176.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QqI-XM-PgE">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QqI-XM-PgE" userLabel="Subject">
                                             <rect key="frame" x="8" y="8" width="42" height="21"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="50" y="8" width="0.0" height="0.0"/>
-                                            </variation>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVc-Bo-k6G">
-                                            <rect key="frame" x="65" y="8" width="42" height="21"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                                <rect key="frame" x="107" y="8" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="179" y="8" width="213" height="29"/>
                                             </variation>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Noc-0e-dYn">
@@ -240,8 +230,7 @@
                                                     <exclude reference="XdW-vN-WFH"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                                <rect key="frame" x="8" y="29" width="100" height="100"/>
+                                            <variation key="widthClass=compact">
                                                 <mask key="constraints">
                                                     <include reference="GEE-Tk-Yrf"/>
                                                     <include reference="XdW-vN-WFH"/>
@@ -258,14 +247,14 @@
                                                 <rect key="frame" x="50" y="132" width="0.0" height="0.0"/>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICK-Cs-mz1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICK-Cs-mz1">
                                             <rect key="frame" x="58" y="132" width="42" height="21"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="100" y="132" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="264" y="144" width="128" height="25"/>
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abn-gS-eEV">
@@ -290,6 +279,29 @@
                                                 </mask>
                                             </variation>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVc-Bo-k6G" userLabel="Name">
+                                            <rect key="frame" x="65" y="8" width="42" height="21"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="19" id="GJb-ZZ-h5p"/>
+                                                <constraint firstAttribute="width" constant="154" id="dDL-Ms-1oU"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="GJb-ZZ-h5p"/>
+                                                    <exclude reference="dDL-Ms-1oU"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="GJb-ZZ-h5p"/>
+                                                    <include reference="dDL-Ms-1oU"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
                                     </subviews>
                                     <animations/>
                                     <constraints>
@@ -297,13 +309,17 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="Abn-gS-eEV" secondAttribute="bottom" constant="27" id="PeI-Zp-Yie"/>
                                         <constraint firstItem="Abn-gS-eEV" firstAttribute="leading" secondItem="Noc-0e-dYn" secondAttribute="trailing" constant="15" id="TFq-VF-kIW"/>
                                         <constraint firstItem="Abn-gS-eEV" firstAttribute="top" secondItem="Btv-9e-AUH" secondAttribute="topMargin" constant="27" id="XTo-y7-mdO"/>
+                                        <constraint firstItem="UVc-Bo-k6G" firstAttribute="leading" secondItem="Btv-9e-AUH" secondAttribute="leadingMargin" constant="5" id="Zsk-V9-uuy"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Abn-gS-eEV" secondAttribute="trailing" constant="6" id="aZJ-5I-kBY"/>
+                                        <constraint firstItem="UVc-Bo-k6G" firstAttribute="top" secondItem="Btv-9e-AUH" secondAttribute="topMargin" constant="5" id="gXd-Sv-AqM"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Abn-gS-eEV" secondAttribute="bottom" constant="27" id="ph4-ft-tKn"/>
                                         <constraint firstItem="Abn-gS-eEV" firstAttribute="leading" secondItem="Noc-0e-dYn" secondAttribute="trailing" constant="15" id="yGU-80-TUm"/>
                                         <constraint firstItem="Noc-0e-dYn" firstAttribute="top" secondItem="UVc-Bo-k6G" secondAttribute="bottom" constant="8" id="zYf-fd-0YX"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
+                                            <exclude reference="Zsk-V9-uuy"/>
+                                            <exclude reference="gXd-Sv-AqM"/>
                                             <exclude reference="29K-Hy-bdu"/>
                                             <exclude reference="zYf-fd-0YX"/>
                                             <exclude reference="PeI-Zp-Yie"/>
@@ -316,6 +332,8 @@
                                     </variation>
                                     <variation key="widthClass=compact">
                                         <mask key="constraints">
+                                            <include reference="Zsk-V9-uuy"/>
+                                            <include reference="gXd-Sv-AqM"/>
                                             <include reference="29K-Hy-bdu"/>
                                             <include reference="zYf-fd-0YX"/>
                                             <include reference="PeI-Zp-Yie"/>
@@ -330,7 +348,10 @@
                                 <animations/>
                                 <connections>
                                     <outlet property="firstComment" destination="Abn-gS-eEV" id="QtQ-32-Bgz"/>
+                                    <outlet property="nameLabel" destination="UVc-Bo-k6G" id="cZh-M1-QQN"/>
                                     <outlet property="opImageView" destination="Noc-0e-dYn" id="5zz-n5-MJu"/>
+                                    <outlet property="repliesLabel" destination="ICK-Cs-mz1" id="XjR-8z-5Sz"/>
+                                    <outlet property="subject" destination="QqI-XM-PgE" id="rWS-NW-I8K"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -355,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVC-Ad-ZrL" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1545" y="290"/>
+            <point key="canvasLocation" x="1543.5" y="290"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Tdx-k9-oAi">

@@ -10,11 +10,13 @@ import UIKit
 import Foundation
 
 class Post {
-    
+    // TODO: Cleanup
+
     var no: Int // numma
     var sticky: Bool
     var closed: Bool
     var name: String
+    var sub: String?
     var com: String // comment
     var filename: String
     var ext: String
@@ -31,7 +33,7 @@ class Post {
     var bumplimit: Bool // bumplimit met
     var imagelimit: Bool // imagelimit met
     var semantic_url: String // thread slug
-    var replies: Int16 // reply count
+    var replies: Int // reply count
     var images: Int16 // image count
     
     var thumbnail: UIImage?
@@ -39,7 +41,7 @@ class Post {
     
     init(no: Int, sticky: Bool, closed: Bool, name: String, com: String, filename: String, ext: String,
         w: Int16, h: Int16, tn_w: Int16, tn_h: Int16, tim: Int, time: Int16, md5: String, fsize: Int16,
-        resto: Int16, capcode: String, bumplimit: Bool, imagelimit: Bool, semantic_url: String, replies: Int16, images: Int16) {
+        resto: Int16, capcode: String, bumplimit: Bool, imagelimit: Bool, semantic_url: String, replies: Int, images: Int16) {
             self.no = no
             self.sticky = sticky
             self.closed = closed

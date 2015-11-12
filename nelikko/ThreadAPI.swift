@@ -27,9 +27,18 @@ class ThreadAPI {
                         if let com = op["com"]! {
                             comment = com as! String
                         }
+                        var subject = ""
+                        if let sub = op["sub"]! {
+                            subject = sub as! String
+                        }
+                        let name = op["name"] as! String
                         let tim = op["tim"] as! NSNumber
                         let num = op["no"] as! NSNumber
+                        let replies = op["replies"] as! NSNumber
                         let p = Post(no: num.longValue, com: comment, tim: tim.longValue)
+                        p.sub = subject
+                        p.name = name
+                        p.replies = replies.longValue
                         destinationThreads.append(
                             Thread(op: p, board: board, no: p.no)
                         )
