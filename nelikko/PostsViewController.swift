@@ -39,12 +39,33 @@ class PostsViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PostCell", forIndexPath: indexPath) as! ThreadPostCell
-        
         let requestedPost = self.posts[indexPath.row]
-        cell.postCommentLabel?.attributedText = requestedPost.getAttributedComment()!
-        cell.postNumber?.text = String(requestedPost.no)
-        return cell
+        if requestedPost.tim != 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("PostImageCell", forIndexPath: indexPath) as! ThreadPostWithImageCell
+
+            func setImage(data: NSData) {
+                requestedPost.postImage = UIImage(data: data)
+                cell.postImageView?.image = requestedPost.postImage
+                self.tableView.reloadData()
+            }
+            if requestedPost.postImage == nil {
+                API.getThumbnailImage(forPost: requestedPost, withCallback: setImage)
+            }
+            else {
+                cell.postImageView?.image = requestedPost.postImage
+            }
+
+            cell.postCommentLabel?.attributedText = requestedPost.getAttributedComment()!
+            cell.postNumber?.text = String(requestedPost.no)
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("PostCell", forIndexPath: indexPath) as! ThreadPostCell
+
+            cell.postCommentLabel?.attributedText = requestedPost.getAttributedComment()!
+            cell.postNumber?.text = String(requestedPost.no)
+            return cell
+        }
     }
 
 }

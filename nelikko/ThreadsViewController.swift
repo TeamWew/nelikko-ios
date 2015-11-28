@@ -55,6 +55,20 @@ class ThreadsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("ThreadCell", forIndexPath: indexPath) as! ThreadOPCell
 
         let requestedThread = self.threads[indexPath.row]
+
+        func setImage(data: NSData) {
+            requestedThread.op.postImage = UIImage(data: data)
+            cell.opImageView?.image = requestedThread.op.postImage
+            self.tableView.reloadData()
+        }
+        if requestedThread.op.postImage == nil {
+            API.getThumbnailImage(forPost: requestedThread.op, withCallback: setImage)
+        }
+        else {
+            cell.opImageView?.image = requestedThread.op.postImage
+        }
+
+
         cell.firstComment?.attributedText = requestedThread.op.getAttributedComment()
         cell.subject?.text = requestedThread.op.sub
         cell.repliesLabel?.text = String(requestedThread.op.replies) + " replies"
