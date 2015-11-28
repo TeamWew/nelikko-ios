@@ -76,17 +76,18 @@ class ThreadAPI {
                         p.thread = thread
                         destinationPosts.append(p)
                     }
-                    }
-                    completion(destinationPosts)
                 }
+                    completion(destinationPosts)
+            }
         }
     
     func getThumbnailImage(forPost post: Post, withCallback completion: ((NSData) -> Void)) {
-        let imageName = post.getImageNameString()
+        let imageName = post.getThumbnailImageNameString()
         var board = post.thread!.board.board
         board = board as String!
         if imageName != nil {
             let url = "https://i.4cdn.org/\(board)/\(imageName!)"
+                    print(url)
             Alamofire.request(.GET, url)
                 .response { (request, response, data, error) in
                     guard let imageData = data else {
