@@ -36,6 +36,7 @@ class Post {
     var replies: Int // reply count
     var images: Int16 // image count
     
+    var thread: Thread?
     var thumbnail: UIImage?
     var postImage: UIImage?
     
@@ -124,6 +125,13 @@ class Post {
             return nil
         }
     }
+
+    func getImageNameString() -> String? {
+        return "\(tim!)\(ext)"
+    }
     
-    
+    func getThumbnailImageNameString() -> String? {
+        return "\(tim!)s\(ext)"
+    }
+
 }
