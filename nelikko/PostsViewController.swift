@@ -46,7 +46,6 @@ class PostsViewController : UITableViewController {
             func setImage(data: NSData) {
                 requestedPost.postImage = UIImage(data: data)
                 cell.postImageView?.image = requestedPost.postImage
-                self.tableView.reloadData()
             }
             if requestedPost.postImage == nil {
                 API.getThumbnailImage(forPost: requestedPost, withCallback: setImage)

@@ -59,8 +59,8 @@ class ThreadsViewController: UITableViewController {
         func setImage(data: NSData) {
             requestedThread.op.postImage = UIImage(data: data)
             cell.opImageView?.image = requestedThread.op.postImage
-            self.tableView.reloadData()
         }
+
         if requestedThread.op.postImage == nil {
             API.getThumbnailImage(forPost: requestedThread.op, withCallback: setImage)
         }
