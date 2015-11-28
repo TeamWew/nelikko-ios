@@ -131,7 +131,7 @@ class Post {
     }
     
     func getThumbnailImageNameString() -> String? {
-        return "\(tim!)s\(ext)"
+        return "\(tim!)s.jpg"
     }
 
 }
