@@ -87,7 +87,6 @@ class ThreadAPI {
         board = board as String!
         if imageName != nil {
             let url = "https://i.4cdn.org/\(board)/\(imageName!)"
-            print(url)
             Alamofire.request(.GET, url)
                 .response { (request, response, data, error) in
                     guard let imageData = data else {
