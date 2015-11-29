@@ -72,6 +72,10 @@ class ThreadAPI {
                         if let filen = post["tim"]! {
                                 p.tim = (filen as! NSNumber).longValue
                                 p.ext = post["ext"] as! String
+                                p.tn_h = post["tn_h"] as! Int
+                                p.tn_w = post["tn_w"] as! Int
+                                p.h = post["h"] as! Int
+                                p.w = post["w"] as! Int
                         }
                         p.thread = thread
                         destinationPosts.append(p)

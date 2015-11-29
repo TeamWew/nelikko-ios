@@ -20,10 +20,10 @@ class Post {
     var com: String // comment
     var filename: String
     var ext: String
-    var w: Int16
-    var h: Int16
-    var tn_w: Int16 // thumbnail
-    var tn_h: Int16
+    var w: Int
+    var h: Int
+    var tn_w: Int // thumbnail
+    var tn_h: Int
     var tim: Int? // renamed filename epoch
     var time: Int16 // post epoch
     var md5: String
@@ -41,7 +41,7 @@ class Post {
     var postImage: UIImage?
     
     init(no: Int, sticky: Bool, closed: Bool, name: String, com: String, filename: String, ext: String,
-        w: Int16, h: Int16, tn_w: Int16, tn_h: Int16, tim: Int, time: Int16, md5: String, fsize: Int16,
+        w: Int, h: Int, tn_w: Int, tn_h: Int, tim: Int, time: Int16, md5: String, fsize: Int16,
         resto: Int16, capcode: String, bumplimit: Bool, imagelimit: Bool, semantic_url: String, replies: Int, images: Int16) {
             self.no = no
             self.sticky = sticky
