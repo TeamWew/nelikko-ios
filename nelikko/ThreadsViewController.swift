@@ -62,6 +62,7 @@ class ThreadsViewController: UITableViewController {
         }
 
         if requestedThread.op.postImage == nil {
+            cell.opImageView.image = nil
             API.getThumbnailImage(forPost: requestedThread.op, withCallback: setImage)
         }
         else {

@@ -39,6 +39,7 @@ class PostsViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
         let requestedPost = self.posts[indexPath.row]
         if requestedPost.tim != 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("PostImageCell", forIndexPath: indexPath) as! ThreadPostWithImageCell
@@ -48,6 +49,7 @@ class PostsViewController : UITableViewController {
                 cell.postImageView?.image = requestedPost.postImage
             }
             if requestedPost.postImage == nil {
+                cell.postImageView?.image = nil
                 API.getThumbnailImage(forPost: requestedPost, withCallback: setImage)
             }
             else {
