@@ -32,10 +32,9 @@ class ThreadAPI {
                             subject = sub as! String
                         }
 
-                        let tim = op["tim"] as! NSNumber
                         let num = op["no"] as! NSNumber
                         let replies = op["replies"] as! NSNumber
-                        let p = Post(no: num.longValue, com: comment, tim: tim.longValue)
+                        let p = Post(no: num.longValue, com: comment)
                         if let filen = op["tim"]! {
                             p.tim = (filen as! NSNumber).longValue
                             p.ext = op["ext"] as! String
