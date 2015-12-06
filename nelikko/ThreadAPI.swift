@@ -31,17 +31,22 @@ class ThreadAPI {
                         if let sub = op["sub"]! {
                             subject = sub as! String
                         }
-                        let name = op["name"] as! String
-                        let tim = op["tim"] as! NSNumber
+
                         let num = op["no"] as! NSNumber
                         let replies = op["replies"] as! NSNumber
-                        let p = Post(no: num.longValue, com: comment, tim: tim.longValue)
+                        let p = Post(no: num.longValue, com: comment)
+                        if let filen = op["tim"]! {
+                            p.tim = (filen as! NSNumber).longValue
+                            p.ext = op["ext"] as! String
+                        }
                         p.sub = subject
-                        p.name = name
+                        if let name = op["name"]! {
+                            p.name = name as! String
+                        }
                         p.replies = replies.longValue
-                        destinationThreads.append(
-                            Thread(op: p, board: board, no: p.no)
-                        )
+                        let t = Thread(op: p, board: board, no: p.no)
+                        p.thread = t
+                        destinationThreads.append(t)
                     }
                     completion(destinationThreads)
                 }
@@ -60,13 +65,38 @@ class ThreadAPI {
                         if let com = post["com"]! {
                             comment = com as! String
                         }
-                        //let tim = post["tim"] as! NSNumber
+
                         let num = post["no"] as! NSNumber
                         let p = Post(no: num.longValue, com: comment)
+                        if let filen = post["tim"]! {
+                                p.tim = (filen as! NSNumber).longValue
+                                p.ext = post["ext"] as! String
+                                p.tn_h = post["tn_h"] as! Int
+                                p.tn_w = post["tn_w"] as! Int
+                                p.h = post["h"] as! Int
+                                p.w = post["w"] as! Int
+                        }
+                        p.thread = thread
                         destinationPosts.append(p)
                     }
-                    }
-                    completion(destinationPosts)
                 }
+                    completion(destinationPosts)
+            }
         }
+    
+    func getThumbnailImage(forPost post: Post, withCallback completion: ((NSData) -> Void)) {
+        let imageName = post.getThumbnailImageNameString()
+        var board = post.thread!.board.board
+        board = board as String!
+        if imageName != nil {
+            let url = "https://i.4cdn.org/\(board)/\(imageName!)"
+            Alamofire.request(.GET, url)
+                .response { (request, response, data, error) in
+                    guard let imageData = data else {
+                        return
+                    }
+                    completion(imageData)
+            }
+        }
+    }
 }

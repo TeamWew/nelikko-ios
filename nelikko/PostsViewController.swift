@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Agrume
 
 class PostsViewController : UITableViewController {
     let API: ThreadAPI = ThreadAPI()
@@ -23,6 +24,8 @@ class PostsViewController : UITableViewController {
             self.posts = posts
             self.tableView.reloadData()
         }
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44.0
         API.getPosts(forThread: self.thread!, withCallback: getPostsCallback)
     }
     
@@ -39,12 +42,47 @@ class PostsViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PostCell", forIndexPath: indexPath) as! ThreadPostCell
-        
+
         let requestedPost = self.posts[indexPath.row]
-        cell.postCommentLabel?.attributedText = requestedPost.getAttributedComment()!
-        cell.postNumber?.text = String(requestedPost.no)
-        return cell
+        if requestedPost.tim != 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("PostImageCell", forIndexPath: indexPath) as! ThreadPostWithImageCell
+
+            func setImage(data: NSData) {
+                requestedPost.postImage = UIImage(data: data)
+                cell.postImageView?.image = requestedPost.postImage
+            }
+            if requestedPost.postImage == nil {
+                cell.postImageView?.image = nil
+                API.getThumbnailImage(forPost: requestedPost, withCallback: setImage)
+            }
+            else {
+                cell.postImageView?.image = requestedPost.postImage
+            }
+
+            cell.postCommentLabel?.attributedText = requestedPost.getAttributedComment()!
+            cell.postNumber?.text = String(requestedPost.no)
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("PostCell", forIndexPath: indexPath) as! ThreadPostCell
+
+            cell.postCommentLabel?.attributedText = requestedPost.getAttributedComment()!
+            cell.postNumber?.text = String(requestedPost.no)
+            return cell
+        }
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedPost: Post = self.posts[indexPath.row]
+        if let _ = selectedPost.postImage {
+            let imageName = selectedPost.getImageNameString()!
+            let url = "https://i.4cdn.org/\(selectedPost.thread!.board.board)/\(imageName)"
+            let agrume = Agrume(imageURL: NSURL(string: url)!)
+            agrume.showFrom(self)
+        }
+        else {
+            self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        }
     }
 
 }
