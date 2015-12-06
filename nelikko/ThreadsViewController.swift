@@ -19,11 +19,24 @@ class ThreadsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.backgroundColor = UIColor.whiteColor()
+        self.refreshControl?.tintColor = UIColor.greenColor()
+        self.refreshControl?.addTarget(self, action: "reloadThreads", forControlEvents: UIControlEvents.ValueChanged)
+
+
         self.navBar.title = self.board?.getTitleString()
-        func getThreadsCallback(threads: Array<Thread>) {
-            self.threads = threads
-            self.tableView.reloadData()
-        }
+        self.reloadThreads()
+    }
+
+    func getThreadsCallback(threads: Array<Thread>) {
+        self.threads = threads
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+    }
+
+    func reloadThreads() {
         API.getAll(forBoard: self.board!, withCallback: getThreadsCallback)
     }
 

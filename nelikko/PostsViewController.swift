@@ -19,18 +19,29 @@ class PostsViewController : UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.backgroundColor = UIColor.whiteColor()
+        self.refreshControl?.tintColor = UIColor.greenColor()
+        self.refreshControl?.addTarget(self, action: "reloadThread", forControlEvents: UIControlEvents.ValueChanged)
         self.navBar.title = "nelikko"
-        func getPostsCallback(posts: Array<Post>) {
-            self.posts = posts
-            self.tableView.reloadData()
-        }
+
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
+        self.reloadThread()
+    }
+
+    func getPostsCallback(posts: Array<Post>) {
+        self.posts = posts
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+    }
+
+    func reloadThread() {
         API.getPosts(forThread: self.thread!, withCallback: getPostsCallback)
     }
-    
-    
-    
+
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
