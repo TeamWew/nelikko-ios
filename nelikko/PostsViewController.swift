@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Agrume
 
 class PostsViewController : UITableViewController {
     let API: ThreadAPI = ThreadAPI()
@@ -23,6 +24,8 @@ class PostsViewController : UITableViewController {
             self.posts = posts
             self.tableView.reloadData()
         }
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44.0
         API.getPosts(forThread: self.thread!, withCallback: getPostsCallback)
     }
     
@@ -66,6 +69,19 @@ class PostsViewController : UITableViewController {
             cell.postCommentLabel?.attributedText = requestedPost.getAttributedComment()!
             cell.postNumber?.text = String(requestedPost.no)
             return cell
+        }
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedPost: Post = self.posts[indexPath.row]
+        if let _ = selectedPost.postImage {
+            let imageName = selectedPost.getImageNameString()!
+            let url = "https://i.4cdn.org/\(selectedPost.thread!.board.board)/\(imageName)"
+            let agrume = Agrume(imageURL: NSURL(string: url)!)
+            agrume.showFrom(self)
+        }
+        else {
+            self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
         }
     }
 
