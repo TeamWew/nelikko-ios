@@ -13,6 +13,7 @@ import Agrume
 class PostsViewController : UITableViewController {
     let API: ThreadAPI = ThreadAPI()
     var thread: Thread?
+    var postLocationMap = [Int: Double]()
     var posts = [Post]()
 
     @IBOutlet var navBar: UINavigationItem!
@@ -46,15 +47,19 @@ class PostsViewController : UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.posts.count
     }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let requestedPost = self.posts[indexPath.row]
+        let attributedString = requestedPost.getAttributedComment()!
+
+        // Populate post's location map for later use in links
+        self.postLocationMap[requestedPost.no] = Double(tableView.contentOffset.y)
+
         if requestedPost.tim != 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("PostImageCell", forIndexPath: indexPath) as! ThreadPostWithImageCell
 
@@ -69,16 +74,16 @@ class PostsViewController : UITableViewController {
             else {
                 cell.postImageView?.image = requestedPost.postImage
             }
-
-            cell.postCommentLabel?.attributedText = requestedPost.getAttributedComment()!
+            cell.postCommentTextView.attributedText = attributedString
             cell.postNumber?.text = String(requestedPost.no)
+            cell.postCommentTextView.font = UIFont.systemFontOfSize(14.0)
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCellWithIdentifier("PostCell", forIndexPath: indexPath) as! ThreadPostCell
-
-            cell.postCommentLabel?.attributedText = requestedPost.getAttributedComment()!
+            cell.postCommentTextView.attributedText = attributedString
             cell.postNumber?.text = String(requestedPost.no)
+            cell.postCommentTextView.font = UIFont.systemFontOfSize(14.0)
             return cell
         }
     }

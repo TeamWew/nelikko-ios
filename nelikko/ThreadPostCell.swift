@@ -12,8 +12,10 @@ import Foundation
 class ThreadPostCell : UITableViewCell {
 
     var imageUrl: String?
-    @IBOutlet var postCommentLabel: UILabel!
+    var lastKnownPosition: Double?
+
     @IBOutlet var postNumber: UILabel!
+    @IBOutlet var postCommentTextView: UITextView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
