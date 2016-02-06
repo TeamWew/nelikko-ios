@@ -10,11 +10,13 @@ import UIKit
 import Foundation
 import Agrume
 
-class PostsViewController : UITableViewController {
+class PostsViewController : UITableViewController, UITextViewDelegate {
     let API: ThreadAPI = ThreadAPI()
     var thread: Thread?
-    var postLocationMap = [Int: Double]()
+    var postLocationMap = [Int: NSIndexPath]()
     var posts = [Post]()
+    var previousLocation: CGPoint?
+    var backButton: UIButton?
 
     @IBOutlet var navBar: UINavigationItem!
 
@@ -42,12 +44,50 @@ class PostsViewController : UITableViewController {
         API.getPosts(forThread: self.thread!, withCallback: getPostsCallback)
     }
 
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    func scrollToPost(number:Int) {
+        if let indexPathFound = self.postLocationMap[number] {
+            self.tableView.scrollToRowAtIndexPath(indexPathFound, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        }
+    }
+
+    func scrollToExitedPost() {
+        if self.previousLocation != nil {
+            self.tableView.setContentOffset(self.previousLocation!, animated: true)
+            self.backButton?.removeFromSuperview()
+        }
+    }
+
+    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+        let urlSplit = URL.absoluteString.characters.split{$0 == ":"}.map(String.init)
+        if urlSplit.first! == "quote" {
+            let postNumberString = urlSplit.last! as NSString
+            self.scrollToPost(Int(postNumberString.substringFromIndex(2))!)
+            self.previousLocation = self.tableView.contentOffset
+            self.createBackButton()
+            return false
+        }
+        return true
+
+    }
+
+    func createBackButton() {
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let button: UIButton = UIButton(type: UIButtonType.Custom) as UIButton
+        button.frame = CGRectMake(screenSize.width - 50, screenSize.height - 50, 30, 30)
+        button.addTarget(self, action:"scrollToExitedPost", forControlEvents: UIControlEvents.TouchUpInside)
+        button.backgroundColor = UIColor.whiteColor()
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 10
+        button.layer.borderColor = UIColor.lightGrayColor().CGColor
+        button.setBackgroundImage(UIImage(named: "downBackButton"), forState: UIControlState.Normal)
+        self.backButton = button
+        self.parentViewController!.view.addSubview(button)
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.posts.count
@@ -58,7 +98,7 @@ class PostsViewController : UITableViewController {
         let attributedString = requestedPost.getAttributedComment()!
 
         // Populate post's location map for later use in links
-        self.postLocationMap[requestedPost.no] = Double(tableView.contentOffset.y)
+        self.postLocationMap[requestedPost.no] = indexPath
 
         if requestedPost.tim != 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("PostImageCell", forIndexPath: indexPath) as! ThreadPostWithImageCell
@@ -90,14 +130,12 @@ class PostsViewController : UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedPost: Post = self.posts[indexPath.row]
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
         if let _ = selectedPost.postImage {
             let imageName = selectedPost.getImageNameString()!
             let url = "https://i.4cdn.org/\(selectedPost.thread!.board.board)/\(imageName)"
             let agrume = Agrume(imageURL: NSURL(string: url)!)
             agrume.showFrom(self)
-        }
-        else {
-            self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
         }
     }
 
