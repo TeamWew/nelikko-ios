@@ -119,7 +119,15 @@ class Post {
     func getAttributedComment() -> NSAttributedString? {
         let encodedData = self.com.dataUsingEncoding(NSUTF8StringEncoding)!
         do {
-            return try NSAttributedString(data: encodedData, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute:NSUTF8StringEncoding], documentAttributes: nil)
+            let attributedString = try NSMutableAttributedString(data: encodedData, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute:NSUTF8StringEncoding], documentAttributes: nil)
+
+            let foundQuotes = self.matchesForRegexInText(">>[0-9]+", text: attributedString.string)
+            for quote in foundQuotes {
+                let (quoteRange, quotedPost) = quote
+                let linkValue = "quote://\(quotedPost.substringFromIndex(2))"
+                attributedString.addAttribute(NSLinkAttributeName, value: linkValue, range: quoteRange)
+            }
+            return attributedString
         } catch let error as NSError {
             print(error.localizedDescription)
             return nil
@@ -129,9 +137,22 @@ class Post {
     func getImageNameString() -> String? {
         return "\(tim!)\(ext)"
     }
-    
+
     func getThumbnailImageNameString() -> String? {
         return "\(tim!)s.jpg"
     }
 
+    func matchesForRegexInText(regex: String!, text: String!) -> [(NSRange, NSString)] {
+        // TODO: move somewhere else
+        do {
+            let regex = try NSRegularExpression(pattern: regex, options: [])
+            let nsString = text as NSString
+            let results = regex.matchesInString(text,
+                options: [], range: NSMakeRange(0, nsString.length))
+            return results.map { ($0.range, nsString.substringWithRange($0.range)) }
+        } catch let error as NSError {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
 }
