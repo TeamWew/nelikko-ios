@@ -8,7 +8,7 @@
 
 import Alamofire
 import Foundation
-
+import ObjectMapper
 class BoardsAPI {
     
     let url: String = "https://a.4cdn.org/boards.json"
@@ -23,17 +23,8 @@ class BoardsAPI {
                 if let JSON = response.result.value {
                     let things = JSON["boards"] as? NSArray
                     for item in things! {
-                        let boardJSONItem = item as! Dictionary<String, AnyObject>
-                        let ws_board = boardJSONItem["ws_board"] as! NSNumber
-                        if self.defaults.boolForKey("FilterNSFW") && !Bool(ws_board) {
-                            continue
-                        }
-                        let initial: String = boardJSONItem["board"] as! String!
-                        let title: String = boardJSONItem["title"]  as! String!
-                        let board = Board(board: initial, title: title)
-                        board.ws_board = Bool(ws_board)
-
-                        boards.append(board)
+                        let board = Mapper<Board>().map(item)
+                        boards.append(board!)
                     }
                     completion(boards)
                 }

@@ -100,7 +100,7 @@ class PostsViewController : UITableViewController, UITextViewDelegate {
         // Populate post's location map for later use in links
         self.postLocationMap[requestedPost.no] = indexPath
 
-        if requestedPost.tim != 0 {
+        if let _ = requestedPost.tim {
             let cell = tableView.dequeueReusableCellWithIdentifier("PostImageCell", forIndexPath: indexPath) as! ThreadPostWithImageCell
 
             func setImage(data: NSData) {

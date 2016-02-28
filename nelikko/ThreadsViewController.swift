@@ -86,7 +86,7 @@ class ThreadsViewController: UITableViewController {
         cell.firstComment.attributedText = requestedThread.op.getAttributedComment()
         cell.firstComment.font = UIFont.systemFontOfSize(12.0)
         cell.subject?.text = requestedThread.op.sub
-        cell.repliesLabel?.text = String(requestedThread.op.replies) + " replies"
+        cell.repliesLabel?.text = String(requestedThread.op.replies!) + " replies"
         cell.nameLabel?.text = requestedThread.op.name
 
         return cell

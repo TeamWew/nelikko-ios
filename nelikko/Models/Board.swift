@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import ObjectMapper
 
-class Board {
-    var board: String
+class Board: Mappable {
+    var board: String!
     var bump_limit: Int16?
     var image_limit: Int16?
     var is_archived: Bool?
@@ -23,15 +24,25 @@ class Board {
     var ws_board: Bool?
     var threads: NSSet? // Relation
     
-    init(board: String) {
-        self.board = board
+    required init?(_ map: Map){
+        
     }
 
-    init(board: String, title: String) {
-        self.title = title
-        self.board = board
+    func mapping(map: Map) {
+        board <- map["board"]
+        bump_limit <- map["bump_limit"]
+        image_limit <- map["image_limit"]
+        is_archived <- map["is_archived"]
+        max_comment_chars <- map["max_comment_chars"]
+        max_filesize <- map["max_filesize"]
+        max_web_filesize <- map["max_web_filesize"]
+        meta_description <- map["meta_description"]
+        pages <- map["pages"]
+        per_page <- map["per_page"]
+        title <- map["title"]
+        ws_board <- map["ws_board"]
     }
-
+    
     func getTitleString() -> String {
         return "/\(board)/ - \(title!)"
     }

@@ -11,6 +11,5 @@ import Foundation
 
 class ThreadPostWithImageCell : ThreadPostCell {
     @IBOutlet var postImageView: UIImageView!
-    
-    
+
 }
