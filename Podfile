@@ -6,6 +6,7 @@ pod 'Alamofire', '~> 3.0'
 pod 'AERecord'
 pod 'AECoreDataUI'
 pod 'Agrume', :git => 'https://github.com/JanGorman/Agrume.git'
+pod 'ObjectMapper', '~> 1.1'
 
 target 'nelikko' do
 
