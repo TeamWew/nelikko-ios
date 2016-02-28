@@ -31,6 +31,7 @@ class BoardsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    //MARK: UITableViewDelegate
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.boards.count
     }
@@ -48,6 +49,7 @@ class BoardsViewController: UITableViewController {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
 
+    //MARK: Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "ThreadsSegue")
         {
