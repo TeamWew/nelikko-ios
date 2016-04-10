@@ -12,14 +12,14 @@ import ObjectMapper
 
 class ThreadAPI {
 
-    func getAll(forBoard board: Board, withCallback completion: ((Array<Thread>) -> Void)!){
+    func getAll(forBoard board: Board, withCallback completion: (([Thread]) -> Void)!){
         let url = "https://a.4cdn.org/\(board.board)/1.json"
         var destinationThreads: Array<Thread> = []
         Alamofire.request(.GET, url)
             .responseJSON { response in
-                if let JSON = response.result.value {
-                    let threads = JSON["threads"] as? NSArray
-                    for thread in threads! {
+                if let JSON = response.result.value as! NSDictionary? {
+                    let threads = JSON["threads"] as! NSArray
+                    for thread in threads {
                         
                         let posts = thread["posts"] as! NSArray
                         let op = Mapper<Post>().map(posts[0])!
@@ -32,7 +32,7 @@ class ThreadAPI {
         }
     }
 
-    func getPosts(forThread thread: Thread, withCallback completion: ((Array<Post>) -> Void)!) {
+    func getPosts(forThread thread: Thread, withCallback completion: (([Post]) -> Void)!) {
         let url = "https://a.4cdn.org/\(thread.board.board)/thread/\(thread.no).json"
         var destinationPosts: Array<Post> = []
         Alamofire.request(.GET, url)

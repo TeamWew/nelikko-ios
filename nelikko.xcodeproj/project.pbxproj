@@ -22,6 +22,9 @@
 		1ED8D9711BE59DAD00BA08AE /* CatalogueThread.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ED8D9701BE59DAD00BA08AE /* CatalogueThread.xib */; };
 		1EE7E82D1BEFCC8900A8A4A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E82C1BEFCC8900A8A4A7 /* SettingsViewController.swift */; };
 		1EE7E82F1BF00E5400A8A4A7 /* ZooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E82E1BF00E5400A8A4A7 /* ZooViewController.swift */; };
+		2932EC3F1CA9A10E007A3246 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932EC3E1CA9A10E007A3246 /* Favorite.swift */; };
+		2932EC401CA9A379007A3246 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932EC3E1CA9A10E007A3246 /* Favorite.swift */; };
+		2932EC411CA9A37A007A3246 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932EC3E1CA9A10E007A3246 /* Favorite.swift */; };
 		29441F5E1BF32D0700F3A1E3 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29441F5D1BF32D0700F3A1E3 /* PostsViewController.swift */; };
 		29441F611BF32DB700F3A1E3 /* ThreadPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29441F601BF32DB700F3A1E3 /* ThreadPostCell.swift */; };
 		2973EB681C833F330082CBD7 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2973EB671C833F330082CBD7 /* AlamofireObjectMapper.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -100,6 +103,7 @@
 		1ED8D9701BE59DAD00BA08AE /* CatalogueThread.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CatalogueThread.xib; sourceTree = "<group>"; };
 		1EE7E82C1BEFCC8900A8A4A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		1EE7E82E1BF00E5400A8A4A7 /* ZooViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZooViewController.swift; sourceTree = "<group>"; };
+		2932EC3E1CA9A10E007A3246 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		29441F5D1BF32D0700F3A1E3 /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		29441F601BF32DB700F3A1E3 /* ThreadPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadPostCell.swift; sourceTree = "<group>"; };
 		2973EB671C833F330082CBD7 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = "Pods/../build/Debug-iphoneos/AlamofireObjectMapper.framework"; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 				1ED8D9631BE56A4300BA08AE /* Board.swift */,
 				1ED8D9641BE56A4300BA08AE /* Post.swift */,
 				1ED8D9651BE56A4300BA08AE /* Thread.swift */,
+				2932EC3E1CA9A10E007A3246 /* Favorite.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -443,6 +448,7 @@
 				1E0B5DE61BE2AA5F00766347 /* AppDelegate.swift in Sources */,
 				29441F5E1BF32D0700F3A1E3 /* PostsViewController.swift in Sources */,
 				1ED8D9671BE56A4300BA08AE /* Post.swift in Sources */,
+				2932EC3F1CA9A10E007A3246 /* Favorite.swift in Sources */,
 				29F8A7041C0A3D7D001DAC51 /* ThreadPostWithImageCell.swift in Sources */,
 				1ED8D96F1BE59C2B00BA08AE /* ThreadsViewController.swift in Sources */,
 				29B88EF91BF13B4B0072DE6A /* ThreadOPCell.swift in Sources */,
@@ -465,6 +471,7 @@
 				2973EB6F1C8340000082CBD7 /* AppDelegate.swift in Sources */,
 				2973EB751C83400B0082CBD7 /* PostsViewController.swift in Sources */,
 				2973EB791C8340130082CBD7 /* ZooViewController.swift in Sources */,
+				2932EC401CA9A379007A3246 /* Favorite.swift in Sources */,
 				2973EB6D1C833FD80082CBD7 /* Thread.swift in Sources */,
 				2973EB731C8340070082CBD7 /* ThreadsViewController.swift in Sources */,
 				2973EB831C8348AB0082CBD7 /* ThreadOPCell.swift in Sources */,
@@ -487,6 +494,7 @@
 				2973EB701C8340000082CBD7 /* AppDelegate.swift in Sources */,
 				2973EB761C83400C0082CBD7 /* PostsViewController.swift in Sources */,
 				2973EB7A1C8340140082CBD7 /* ZooViewController.swift in Sources */,
+				2932EC411CA9A37A007A3246 /* Favorite.swift in Sources */,
 				2973EB6E1C833FD90082CBD7 /* Thread.swift in Sources */,
 				2973EB741C8340080082CBD7 /* ThreadsViewController.swift in Sources */,
 				2973EB841C8348AB0082CBD7 /* ThreadOPCell.swift in Sources */,
