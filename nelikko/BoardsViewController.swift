@@ -20,11 +20,11 @@ class BoardsViewController: UITableViewController {
     var favorites = [Board]()
     let API: BoardsAPI = BoardsAPI()
     var selectedBoard: Board?
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        func getBoardsCallback(boards: Array<Board>) {
+        func getBoardsCallback(_ boards: Array<Board>) {
             self.boards = boards
             self.refreshFavorites()
             self.tableView.reloadData()
@@ -33,12 +33,7 @@ class BoardsViewController: UITableViewController {
     }
     
     func refreshFavorites() {
-        self.favorites = []
-        for board in boards {
-            if (isFavorited(board.board)) {
-                self.favorites.append(board)
-            }
-        }
+        self.favorites = boards.filter {b in isFavorited(b.board)}
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,31 +42,35 @@ class BoardsViewController: UITableViewController {
     }
 
     //MARK: UITableViewDelegate
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
             return self.favorites.count
-        }
-        else {
+        case 1:
             return self.boards.count
+        default:
+            return 0
         }
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
             return "Favorites"
-        }
-        else {
+        case 1:
             return "Boards"
+        default:
+            return nil
         }
     }
     
-    func indexOfFavorite(identifier: String) -> Int {
+    func indexOfFavorite(_ identifier: String) -> Int {
         var i = 0
-        for (x, b) in self.favorites.enumerate() {
+        for (x, b) in self.favorites.enumerated() {
             if b.board == identifier {
                 i = x
             }
@@ -79,70 +78,58 @@ class BoardsViewController: UITableViewController {
         return i
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        var text: String?
-        if (indexPath.section == 0) {
-            text = self.favorites[indexPath.row].getTitleString()
-        } else {
-            text = self.boards[indexPath.row].getTitleString()
-        }
-        cell.textLabel?.text = text!
+        cell.textLabel?.text = (indexPath as NSIndexPath).section == 0 ? self.favorites[(indexPath as NSIndexPath).row].getTitleString() : self.boards[(indexPath as NSIndexPath).row].getTitleString()
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var selected: Board?
-        if (indexPath.section == 0) {
-            selected = self.favorites[indexPath.row]
-        } else {
-            selected = self.boards[indexPath.row]
-        }
-        self.selectedBoard = selected
-        performSegueWithIdentifier("ThreadsSegue", sender: self)
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedBoard = (indexPath as NSIndexPath).section == 0 ? self.favorites[(indexPath as NSIndexPath).row] : self.boards[(indexPath as NSIndexPath).row]
+        performSegue(withIdentifier: "ThreadsSegue", sender: self)
+        self.tableView.deselectRow(at: indexPath, animated: false)
     }
 
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.Delete
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.delete
     }
 
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let cell = tableView.cellForRow(at: indexPath)
         let text = cell?.textLabel?.text!
         let boardString = String(text!)
-        let boardIdentifier = boardString.characters.split{$0 == "/"}.map(String.init)[0]
+        let boardIdentifier = boardString?.characters.split(separator: "/").map(String.init).first
 
         let realm = try! Realm()
-        if (isFavorited(boardIdentifier)) {
-            let unFavoriteAction = UITableViewRowAction(style: .Normal, title: "Unfavorite") { (rowAction:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
-                let b = realm.objects(FavoritedBoard).filter("identifier == '\(boardIdentifier)'").first!
+        if (isFavorited(boardIdentifier!)) {
+            let unFavoriteAction = UITableViewRowAction(style: .normal, title: "Unfavorite") { (rowAction:UITableViewRowAction, indexPath:IndexPath) -> Void in
+                let b = realm.allDynamicObjects(ofType: "FavoritedBoard").filter(using: "identifier == '\(boardIdentifier)'").first!
                 try! realm.write {
                     realm.delete(b)
                 }
-                let i = self.indexOfFavorite(boardIdentifier)
-                self.favorites.removeAtIndex(i)
+                let i = self.indexOfFavorite(boardIdentifier!)
+                self.favorites.remove(at: i)
                 tableView.setEditing(false, animated: true)
-                tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: i, inSection: 0)], withRowAnimation: .Automatic)
+                tableView.deleteRows(at: [IndexPath(row: i, section: 0)], with: .automatic)
             }
             unFavoriteAction.backgroundColor = UIColor(red: 252.0/255.0, green: 0, blue: 0, alpha: 1)
             return [unFavoriteAction]
         }
         else {
-            let favoriteAction = UITableViewRowAction(style: .Normal, title: "Favorite") { (rowAction:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
+            let favoriteAction = UITableViewRowAction(style: .normal, title: "Favorite") { (rowAction:UITableViewRowAction, indexPath:IndexPath) -> Void in
                 try! realm.write {
                     let b = FavoritedBoard()
-                    b.identifier = boardIdentifier
+                    b.identifier = boardIdentifier!
                     realm.add(b)
                 }
                 self.refreshFavorites()
-                let i = self.indexOfFavorite(boardIdentifier)
+                let i = self.indexOfFavorite(boardIdentifier!)
                 tableView.setEditing(false, animated: true)
-                tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: i, inSection: 0)], withRowAnimation: .Automatic)
+                tableView.insertRows(at: [IndexPath(row: i, section: 0)], with: .automatic)
             }
             favoriteAction.backgroundColor = UIColor(red: 252.0/255.0, green: 194.0/255.0, blue: 0, alpha: 1) // golden
             return [favoriteAction]
@@ -151,23 +138,23 @@ class BoardsViewController: UITableViewController {
     }
 
     //MARK: Segue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ThreadsSegue")
         {
-            let destinationVC = segue.destinationViewController as! ThreadsViewController
+            let destinationVC = segue.destination as! ThreadsViewController
             destinationVC.board = self.selectedBoard
             self.selectedBoard = nil
         }
     }
     
     //MARK: Favorites utilities
-    func isFavorited(identifier: String) -> Bool {
+    func isFavorited(_ identifier: String) -> Bool {
         let realm = try! Realm()
-        return realm.objects(FavoritedBoard).filter("identifier == '\(identifier)'").count > 0
+        return realm.allDynamicObjects(ofType: "FavoritedBoard").filter(using: "identifier == '\(identifier)'").count > 0
     }
 
-    @IBAction func testshit(sender: AnyObject) {
-        performSegueWithIdentifier("ZooSegue", sender: sender)
+    @IBAction func testshit(_ sender: AnyObject) {
+        performSegue(withIdentifier: "ZooSegue", sender: sender)
     }
 }
 

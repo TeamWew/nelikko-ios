@@ -11,16 +11,16 @@ import Foundation
 
 class ZooViewController: UIViewController, UIWebViewDelegate {
 
-    func webViewDidStartLoad(webView: UIWebView){
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    func webViewDidStartLoad(_ webView: UIWebView){
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
-    func webViewDidFinishLoad(webView: UIWebView){
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    func webViewDidFinishLoad(_ webView: UIWebView){
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?){
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error){
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
     /***
@@ -33,7 +33,7 @@ class ZooViewController: UIViewController, UIWebViewDelegate {
         
         /* Render the web view under the status bar */
         var frame = view.bounds
-        frame.origin.y = UIApplication.sharedApplication().statusBarFrame.height
+        frame.origin.y = UIApplication.shared.statusBarFrame.height
         frame.size.height -= frame.origin.y
         
         let webView = UIWebView(frame: frame)
@@ -41,8 +41,8 @@ class ZooViewController: UIViewController, UIWebViewDelegate {
         webView.scalesPageToFit = true
         view.addSubview(webView)
         
-        let url = NSURL(string: "http://www.apple.com")
-        let request = NSURLRequest(URL: url!)
+        let url = URL(string: "http://www.apple.com")
+        let request = URLRequest(url: url!)
         
         webView.loadRequest(request)
         

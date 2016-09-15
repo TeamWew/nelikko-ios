@@ -21,16 +21,16 @@ class ThreadsViewController: UITableViewController {
         super.viewDidLoad()
 
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.backgroundColor = UIColor.whiteColor()
-        self.refreshControl?.tintColor = UIColor.greenColor()
-        self.refreshControl?.addTarget(self, action: "reloadThreads", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.backgroundColor = UIColor.white
+        self.refreshControl?.tintColor = UIColor.green
+        self.refreshControl?.addTarget(self, action: #selector(ThreadsViewController.reloadThreads), for: UIControlEvents.valueChanged)
 
 
         self.navBar.title = self.board?.getTitleString()
         self.reloadThreads()
     }
 
-    func getThreadsCallback(threads: Array<Thread>) {
+    func getThreadsCallback(_ threads: Array<Thread>) {
         self.threads = threads
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
@@ -45,38 +45,40 @@ class ThreadsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.threads.count
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.selectedThread = self.threads[indexPath.row]
-        performSegueWithIdentifier("PostsSegue", sender: self)
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedThread = self.threads[(indexPath as NSIndexPath).row]
+        performSegue(withIdentifier: "PostsSegue", sender: self)
+        self.tableView.deselectRow(at: indexPath, animated: false)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "PostsSegue")
         {
-            let destinationVC = segue.destinationViewController as! PostsViewController
+            let destinationVC = segue.destination as! PostsViewController
             destinationVC.thread = self.selectedThread
             self.selectedThread = nil
         }
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ThreadCell", forIndexPath: indexPath) as! ThreadOPCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ThreadCell", for: indexPath) as! ThreadOPCell
 
-        let requestedThread = self.threads[indexPath.row]
+        let requestedThread = self.threads[(indexPath as NSIndexPath).row]
 
-        func setImage(data: NSData) {
+        func setImage(_ data: Data) {
             requestedThread.op.postImage = UIImage(data: data)
             cell.opImageView?.image = requestedThread.op.postImage
         }
 
         if requestedThread.op.postImage == nil {
             cell.opImageView.image = nil
-            API.getThumbnailImage(forPost: requestedThread.op, withCallback: setImage)
+            if requestedThread.op.tim != nil {
+                API.getThumbnailImage(forPost: requestedThread.op, withCallback: setImage)
+            }
         }
         else {
             cell.opImageView?.image = requestedThread.op.postImage
@@ -84,7 +86,7 @@ class ThreadsViewController: UITableViewController {
 
 
         cell.firstComment.attributedText = requestedThread.op.getAttributedComment()
-        cell.firstComment.font = UIFont.systemFontOfSize(12.0)
+        cell.firstComment.font = UIFont.systemFont(ofSize: 12.0)
         cell.subject?.text = requestedThread.op.sub
         cell.repliesLabel?.text = String(requestedThread.op.replies!) + " replies"
         cell.nameLabel?.text = requestedThread.op.name

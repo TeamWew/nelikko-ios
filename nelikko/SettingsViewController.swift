@@ -12,25 +12,25 @@ import Foundation
 class SettingsViewController: UITableViewController {
 
     @IBOutlet var nsfwFilter: UISwitch!
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
-        self.nsfwFilter.on = self.defaults.boolForKey("FilterNSFW")
+        self.nsfwFilter.isOn = self.defaults.bool(forKey: "FilterNSFW")
     }
     
-    @IBAction func dismissModal(sender: UINavigationItem) {
+    @IBAction func dismissModal(_ sender: UINavigationItem) {
 
         if (sender.title == "X") {
-             self.dismissViewControllerAnimated(true, completion: {});
+             self.dismiss(animated: true, completion: {});
         }
     }
     
-    @IBAction func nsfwFilterClicked(sender: AnyObject) {
-        if self.nsfwFilter.on {
-            self.defaults.setBool(true, forKey: "FilterNSFW")
+    @IBAction func nsfwFilterClicked(_ sender: AnyObject) {
+        if self.nsfwFilter.isOn {
+            self.defaults.set(true, forKey: "FilterNSFW")
         }
         else {
-            self.defaults.setBool(false, forKey: "FilterNSFW")
+            self.defaults.set(false, forKey: "FilterNSFW")
         }
     }
     /*

@@ -9,25 +9,18 @@
 import Alamofire
 import Foundation
 import ObjectMapper
-class BoardsAPI {
+
+struct BoardsAPI {
     
     let url: String = "https://a.4cdn.org/boards.json"
-    let defaults = NSUserDefaults.standardUserDefaults()
-    
-    func getAllWithCallBack(completion: ((Array<Board>) -> Void)!){
-        // TODO: Proper serialization
-
-        var boards: Array<Board> = []
-        Alamofire.request(.GET, url)
-            .responseJSON { response in
-                if let JSON = response.result.value {
-                    let things = JSON["boards"] as? NSArray
-                    for item in things! {
-                        let board = Mapper<Board>().map(item)
-                        boards.append(board!)
-                    }
-                    completion(boards)
-                }
-        }
+    func getAllWithCallBack(_ completion: (([Board]) -> Void)!) {
+        Alamofire.request(url).responseJSON
+            { response in
+                guard let boards = (response.result.value as? NSDictionary)?["boards"] as? NSArray else { return }
+                completion(boards.map {b in
+                    Mapper<Board>().map(JSONObject: b)!
+                })
+            }
     }
 }
+

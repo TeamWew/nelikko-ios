@@ -41,7 +41,7 @@ class Post: Mappable {
     var thumbnail: UIImage?
     var postImage: UIImage?
 
-    required init?(_ map: Map){
+    required init?(map: Map){
 
     }
 
@@ -73,14 +73,14 @@ class Post: Mappable {
 
     func getAttributedComment() -> NSAttributedString? {
         if self.com != nil {
-            let encodedData = self.com.dataUsingEncoding(NSUTF8StringEncoding)!
+            let encodedData = self.com.data(using: String.Encoding.utf8)!
             do {
-                let attributedString = try NSMutableAttributedString(data: encodedData, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute:NSUTF8StringEncoding], documentAttributes: nil)
+                let attributedString = try NSMutableAttributedString(data: encodedData, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute:String.Encoding.utf8], documentAttributes: nil)
                 
                 let foundQuotes = self.matchesForRegexInText(">>[0-9]+", text: attributedString.string)
                 for quote in foundQuotes {
                     let (quoteRange, quotedPost) = quote
-                    let linkValue = "quote://\(quotedPost.substringFromIndex(2))"
+                    let linkValue = "quote://\(quotedPost.substring(from: 2))"
                     attributedString.addAttribute(NSLinkAttributeName, value: linkValue, range: quoteRange)
                 }
                 return attributedString
@@ -100,14 +100,14 @@ class Post: Mappable {
         return "\(tim!)s.jpg"
     }
 
-    func matchesForRegexInText(regex: String!, text: String!) -> [(NSRange, NSString)] {
+    func matchesForRegexInText(_ regex: String!, text: String!) -> [(NSRange, NSString)] {
         // TODO: move somewhere else
         do {
             let regex = try NSRegularExpression(pattern: regex, options: [])
             let nsString = text as NSString
-            let results = regex.matchesInString(text,
+            let results = regex.matches(in: text,
                 options: [], range: NSMakeRange(0, nsString.length))
-            return results.map { ($0.range, nsString.substringWithRange($0.range)) }
+            return results.map { ($0.range, nsString.substring(with: $0.range) as NSString ) }
         } catch let error as NSError {
             print("invalid regex: \(error.localizedDescription)")
             return []

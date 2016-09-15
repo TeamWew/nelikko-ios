@@ -27,7 +27,7 @@
 		2932EC411CA9A37A007A3246 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2932EC3E1CA9A10E007A3246 /* Favorite.swift */; };
 		29441F5E1BF32D0700F3A1E3 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29441F5D1BF32D0700F3A1E3 /* PostsViewController.swift */; };
 		29441F611BF32DB700F3A1E3 /* ThreadPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29441F601BF32DB700F3A1E3 /* ThreadPostCell.swift */; };
-		2973EB681C833F330082CBD7 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2973EB671C833F330082CBD7 /* AlamofireObjectMapper.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		295EFE6C1D1FEA5300E64B86 /* ThreadPostImageOnlyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295EFE6B1D1FEA5300E64B86 /* ThreadPostImageOnlyCell.swift */; };
 		2973EB691C833FBA0082CBD7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8D9631BE56A4300BA08AE /* Board.swift */; };
 		2973EB6A1C833FBB0082CBD7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8D9631BE56A4300BA08AE /* Board.swift */; };
 		2973EB6B1C833FBE0082CBD7 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8D9641BE56A4300BA08AE /* Post.swift */; };
@@ -40,8 +40,6 @@
 		2973EB721C8340040082CBD7 /* BoardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0B5DE71BE2AA5F00766347 /* BoardsViewController.swift */; };
 		2973EB731C8340070082CBD7 /* ThreadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8D96E1BE59C2B00BA08AE /* ThreadsViewController.swift */; };
 		2973EB741C8340080082CBD7 /* ThreadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED8D96E1BE59C2B00BA08AE /* ThreadsViewController.swift */; };
-		2973EB751C83400B0082CBD7 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29441F5D1BF32D0700F3A1E3 /* PostsViewController.swift */; };
-		2973EB761C83400C0082CBD7 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29441F5D1BF32D0700F3A1E3 /* PostsViewController.swift */; };
 		2973EB771C83400F0082CBD7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E82C1BEFCC8900A8A4A7 /* SettingsViewController.swift */; };
 		2973EB781C8340100082CBD7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E82C1BEFCC8900A8A4A7 /* SettingsViewController.swift */; };
 		2973EB791C8340130082CBD7 /* ZooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE7E82E1BF00E5400A8A4A7 /* ZooViewController.swift */; };
@@ -60,7 +58,9 @@
 		29B88EF91BF13B4B0072DE6A /* ThreadOPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B88EF81BF13B4B0072DE6A /* ThreadOPCell.swift */; };
 		29B88EFB1BF1453A0072DE6A /* ThreadAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B88EFA1BF1453A0072DE6A /* ThreadAPI.swift */; };
 		29F8A7041C0A3D7D001DAC51 /* ThreadPostWithImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F8A7031C0A3D7D001DAC51 /* ThreadPostWithImageCell.swift */; };
-		59317DA38FB07151C988D073 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185310BE05402A9E08FCA1F /* Pods.framework */; };
+		30791CF5A90A4602066C65C9 /* Pods_nelikkoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66AAF8D50BC81411A6CF6A56 /* Pods_nelikkoUITests.framework */; };
+		4D89274AD43E0A5870826DB2 /* Pods_nelikko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B674600CB2C78D0710557D84 /* Pods_nelikko.framework */; };
+		847EEC491FFB2CC0A89B8E85 /* Pods_nelikkoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1793F0D8BD1CECF747890C96 /* Pods_nelikkoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +81,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06881D2DCEA35011C022D947 /* Pods-nelikkoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nelikkoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nelikkoTests/Pods-nelikkoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1793F0D8BD1CECF747890C96 /* Pods_nelikkoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nelikkoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E0B5DE21BE2AA5F00766347 /* nelikko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nelikko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E0B5DE51BE2AA5F00766347 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E0B5DE71BE2AA5F00766347 /* BoardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsViewController.swift; sourceTree = "<group>"; };
@@ -106,14 +108,20 @@
 		2932EC3E1CA9A10E007A3246 /* Favorite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		29441F5D1BF32D0700F3A1E3 /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		29441F601BF32DB700F3A1E3 /* ThreadPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadPostCell.swift; sourceTree = "<group>"; };
+		295EFE6B1D1FEA5300E64B86 /* ThreadPostImageOnlyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadPostImageOnlyCell.swift; sourceTree = "<group>"; };
 		2973EB671C833F330082CBD7 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = "Pods/../build/Debug-iphoneos/AlamofireObjectMapper.framework"; sourceTree = "<group>"; };
 		29B88EF61BF136270072DE6A /* BoardsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardsAPI.swift; sourceTree = "<group>"; };
 		29B88EF81BF13B4B0072DE6A /* ThreadOPCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadOPCell.swift; sourceTree = "<group>"; };
 		29B88EFA1BF1453A0072DE6A /* ThreadAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadAPI.swift; sourceTree = "<group>"; };
 		29F8A7031C0A3D7D001DAC51 /* ThreadPostWithImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadPostWithImageCell.swift; sourceTree = "<group>"; };
-		55C9490505B9D92B9F1DF04F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		5FE06C25F588DD8209CFB43A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		66AAF8D50BC81411A6CF6A56 /* Pods_nelikkoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nelikkoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B1DD4202AFE654F9B45DC68 /* Pods-nelikkoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nelikkoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-nelikkoTests/Pods-nelikkoTests.release.xcconfig"; sourceTree = "<group>"; };
+		7B539DD13843FAF33F513464 /* Pods-nelikko.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nelikko.release.xcconfig"; path = "Pods/Target Support Files/Pods-nelikko/Pods-nelikko.release.xcconfig"; sourceTree = "<group>"; };
+		90D6AFDE4AF67CBB31D9696E /* Pods-nelikkoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nelikkoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-nelikkoUITests/Pods-nelikkoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B674600CB2C78D0710557D84 /* Pods_nelikko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nelikko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E185310BE05402A9E08FCA1F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E696698AF6FD3D6D2CD59BAF /* Pods-nelikkoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nelikkoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nelikkoUITests/Pods-nelikkoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FBB098B1666049DE1A03B148 /* Pods-nelikko.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nelikko.debug.xcconfig"; path = "Pods/Target Support Files/Pods-nelikko/Pods-nelikko.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2973EB681C833F330082CBD7 /* AlamofireObjectMapper.framework in Frameworks */,
-				59317DA38FB07151C988D073 /* Pods.framework in Frameworks */,
+				4D89274AD43E0A5870826DB2 /* Pods_nelikko.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847EEC491FFB2CC0A89B8E85 /* Pods_nelikkoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,12 +145,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30791CF5A90A4602066C65C9 /* Pods_nelikkoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04FB5767FF8B60F43586644E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FBB098B1666049DE1A03B148 /* Pods-nelikko.debug.xcconfig */,
+				7B539DD13843FAF33F513464 /* Pods-nelikko.release.xcconfig */,
+				06881D2DCEA35011C022D947 /* Pods-nelikkoTests.debug.xcconfig */,
+				7B1DD4202AFE654F9B45DC68 /* Pods-nelikkoTests.release.xcconfig */,
+				E696698AF6FD3D6D2CD59BAF /* Pods-nelikkoUITests.debug.xcconfig */,
+				90D6AFDE4AF67CBB31D9696E /* Pods-nelikkoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		1E0B5DD91BE2AA5F00766347 = {
 			isa = PBXGroup;
 			children = (
@@ -151,7 +173,7 @@
 				1E0B5E071BE2AA5F00766347 /* nelikkoUITests */,
 				1E0B5DE31BE2AA5F00766347 /* Products */,
 				21DF5C572620ABB0E2AB3966 /* Frameworks */,
-				FD8E07EF772E6EFB9EB8309C /* Pods */,
+				04FB5767FF8B60F43586644E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -222,6 +244,9 @@
 			children = (
 				2973EB671C833F330082CBD7 /* AlamofireObjectMapper.framework */,
 				E185310BE05402A9E08FCA1F /* Pods.framework */,
+				B674600CB2C78D0710557D84 /* Pods_nelikko.framework */,
+				1793F0D8BD1CECF747890C96 /* Pods_nelikkoTests.framework */,
+				66AAF8D50BC81411A6CF6A56 /* Pods_nelikkoUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -229,6 +254,7 @@
 		29441F5F1BF32DA000F3A1E3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				295EFE6B1D1FEA5300E64B86 /* ThreadPostImageOnlyCell.swift */,
 				29B88EF81BF13B4B0072DE6A /* ThreadOPCell.swift */,
 				29441F601BF32DB700F3A1E3 /* ThreadPostCell.swift */,
 				29F8A7031C0A3D7D001DAC51 /* ThreadPostWithImageCell.swift */,
@@ -245,15 +271,6 @@
 			name = API;
 			sourceTree = "<group>";
 		};
-		FD8E07EF772E6EFB9EB8309C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				55C9490505B9D92B9F1DF04F /* Pods.debug.xcconfig */,
-				5FE06C25F588DD8209CFB43A /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,12 +278,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E0B5E0D1BE2AA5F00766347 /* Build configuration list for PBXNativeTarget "nelikko" */;
 			buildPhases = (
-				E82A2CBCD002F15F23CFEDC2 /* Check Pods Manifest.lock */,
+				0072E877F7A5FB6ED97ABE72 /* [CP] Check Pods Manifest.lock */,
 				1E0B5DDE1BE2AA5F00766347 /* Sources */,
 				1E0B5DDF1BE2AA5F00766347 /* Frameworks */,
 				1E0B5DE01BE2AA5F00766347 /* Resources */,
-				46DBB210D0FBC7A41BC0CAD0 /* Embed Pods Frameworks */,
-				323317A8F1A1A107F48932E7 /* Copy Pods Resources */,
+				A0087624AE264C063E6DA1AB /* [CP] Embed Pods Frameworks */,
+				855C85E0DB37A5EACF5CC244 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,9 +298,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E0B5E101BE2AA5F00766347 /* Build configuration list for PBXNativeTarget "nelikkoTests" */;
 			buildPhases = (
+				C78B3F243CC57C7F24AD648B /* [CP] Check Pods Manifest.lock */,
 				1E0B5DF51BE2AA5F00766347 /* Sources */,
 				1E0B5DF61BE2AA5F00766347 /* Frameworks */,
 				1E0B5DF71BE2AA5F00766347 /* Resources */,
+				F5C80DD9AD1747F926F80BCC /* [CP] Embed Pods Frameworks */,
+				70A967D111BF37730475992F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -299,9 +319,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E0B5E131BE2AA5F00766347 /* Build configuration list for PBXNativeTarget "nelikkoUITests" */;
 			buildPhases = (
+				DFF48DF753C9C3806F11AC14 /* [CP] Check Pods Manifest.lock */,
 				1E0B5E001BE2AA5F00766347 /* Sources */,
 				1E0B5E011BE2AA5F00766347 /* Frameworks */,
 				1E0B5E021BE2AA5F00766347 /* Resources */,
+				2683B407CBA340974B66D3E2 /* [CP] Embed Pods Frameworks */,
+				BDEACEBF341859CB973C84B2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,20 +343,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = TeamWew;
 				TargetAttributes = {
 					1E0B5DE11BE2AA5F00766347 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = VHQGR3R9S9;
+						LastSwiftMigration = 0800;
 					};
 					1E0B5DF81BE2AA5F00766347 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = 2C4ZFY3TUT;
+						LastSwiftMigration = 0800;
 						TestTargetID = 1E0B5DE11BE2AA5F00766347;
 					};
 					1E0B5E031BE2AA5F00766347 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = 2C4ZFY3TUT;
+						LastSwiftMigration = 0800;
 						TestTargetID = 1E0B5DE11BE2AA5F00766347;
 					};
 				};
@@ -387,49 +414,139 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		323317A8F1A1A107F48932E7 /* Copy Pods Resources */ = {
+		0072E877F7A5FB6ED97ABE72 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		46DBB210D0FBC7A41BC0CAD0 /* Embed Pods Frameworks */ = {
+		2683B407CBA340974B66D3E2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nelikkoUITests/Pods-nelikkoUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E82A2CBCD002F15F23CFEDC2 /* Check Pods Manifest.lock */ = {
+		70A967D111BF37730475992F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nelikkoTests/Pods-nelikkoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		855C85E0DB37A5EACF5CC244 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nelikko/Pods-nelikko-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0087624AE264C063E6DA1AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nelikko/Pods-nelikko-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDEACEBF341859CB973C84B2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nelikkoUITests/Pods-nelikkoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C78B3F243CC57C7F24AD648B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DFF48DF753C9C3806F11AC14 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F5C80DD9AD1747F926F80BCC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-nelikkoTests/Pods-nelikkoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -455,6 +572,7 @@
 				29441F611BF32DB700F3A1E3 /* ThreadPostCell.swift in Sources */,
 				1ED8D9681BE56A4300BA08AE /* Thread.swift in Sources */,
 				1EE7E82D1BEFCC8900A8A4A7 /* SettingsViewController.swift in Sources */,
+				295EFE6C1D1FEA5300E64B86 /* ThreadPostImageOnlyCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +587,6 @@
 				1E0B5DFE1BE2AA5F00766347 /* nelikkoTests.swift in Sources */,
 				2973EB891C8349A90082CBD7 /* BoardsAPI.swift in Sources */,
 				2973EB6F1C8340000082CBD7 /* AppDelegate.swift in Sources */,
-				2973EB751C83400B0082CBD7 /* PostsViewController.swift in Sources */,
 				2973EB791C8340130082CBD7 /* ZooViewController.swift in Sources */,
 				2932EC401CA9A379007A3246 /* Favorite.swift in Sources */,
 				2973EB6D1C833FD80082CBD7 /* Thread.swift in Sources */,
@@ -492,7 +609,6 @@
 				1E0B5E091BE2AA5F00766347 /* nelikkoUITests.swift in Sources */,
 				2973EB8A1C8349AA0082CBD7 /* BoardsAPI.swift in Sources */,
 				2973EB701C8340000082CBD7 /* AppDelegate.swift in Sources */,
-				2973EB761C83400C0082CBD7 /* PostsViewController.swift in Sources */,
 				2973EB7A1C8340140082CBD7 /* ZooViewController.swift in Sources */,
 				2932EC411CA9A37A007A3246 /* Favorite.swift in Sources */,
 				2973EB6E1C833FD90082CBD7 /* Thread.swift in Sources */,
@@ -552,8 +668,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -597,8 +715,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -617,6 +737,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -624,73 +745,80 @@
 		};
 		1E0B5E0E1BE2AA5F00766347 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55C9490505B9D92B9F1DF04F /* Pods.debug.xcconfig */;
+			baseConfigurationReference = FBB098B1666049DE1A03B148 /* Pods-nelikko.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				DEVELOPMENT_TEAM = VHQGR3R9S9;
 				INFOPLIST_FILE = nelikko/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamwew.nelikko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "nelikko-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		1E0B5E0F1BE2AA5F00766347 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FE06C25F588DD8209CFB43A /* Pods.release.xcconfig */;
+			baseConfigurationReference = 7B539DD13843FAF33F513464 /* Pods-nelikko.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
+				DEVELOPMENT_TEAM = VHQGR3R9S9;
 				INFOPLIST_FILE = nelikko/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamwew.nelikko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "nelikko-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		1E0B5E111BE2AA5F00766347 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06881D2DCEA35011C022D947 /* Pods-nelikkoTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = nelikkoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamwew.nelikkoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/nelikko.app/nelikko";
 			};
 			name = Debug;
 		};
 		1E0B5E121BE2AA5F00766347 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B1DD4202AFE654F9B45DC68 /* Pods-nelikkoTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = nelikkoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamwew.nelikkoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/nelikko.app/nelikko";
 			};
 			name = Release;
 		};
 		1E0B5E141BE2AA5F00766347 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E696698AF6FD3D6D2CD59BAF /* Pods-nelikkoUITests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = nelikkoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamwew.nelikkoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = nelikko;
 				USES_XCTRUNNER = YES;
 			};
@@ -698,11 +826,14 @@
 		};
 		1E0B5E151BE2AA5F00766347 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90D6AFDE4AF67CBB31D9696E /* Pods-nelikkoUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = nelikkoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamwew.nelikkoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = nelikko;
 				USES_XCTRUNNER = YES;
 			};

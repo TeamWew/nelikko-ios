@@ -24,7 +24,7 @@ class Board: Mappable {
     var ws_board: Bool?
     var threads: NSSet? // Relation
     
-    required init?(_ map: Map){
+    required init?(map: Map){
         
     }
 
