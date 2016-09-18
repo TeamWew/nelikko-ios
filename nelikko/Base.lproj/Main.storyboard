@@ -412,7 +412,7 @@
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="250" id="BbL-uw-OsB">
                                                             <variation key="widthClass=compact" constant="300"/>
                                                         </constraint>
-                                                        <constraint firstAttribute="width" constant="374" id="EVC-zq-gNw"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="374" id="EVC-zq-gNw"/>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="KeI-1Z-DB8">
                                                             <variation key="widthClass=compact" constant="250"/>
                                                         </constraint>
