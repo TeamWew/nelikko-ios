@@ -36,8 +36,8 @@ class Post: Mappable {
     var semantic_url: String? // thread slug
     var replies: Int? // reply count
     var images: Int16? // image count
-    
-    var thread: Thread?
+
+    weak var thread: Thread? // Parent
     var thumbnail: UIImage?
     var postImage: UIImage?
 
@@ -72,24 +72,15 @@ class Post: Mappable {
     }
 
     func getAttributedComment() -> NSAttributedString? {
-        if self.com != nil {
-            let encodedData = self.com.data(using: String.Encoding.utf8)!
-            do {
-                let attributedString = try NSMutableAttributedString(data: encodedData, options: [NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute:String.Encoding.utf8], documentAttributes: nil)
-                
-                let foundQuotes = self.matchesForRegexInText(">>[0-9]+", text: attributedString.string)
-                for quote in foundQuotes {
-                    let (quoteRange, quotedPost) = quote
-                    let linkValue = "quote://\(quotedPost.substring(from: 2))"
-                    attributedString.addAttribute(NSLinkAttributeName, value: linkValue, range: quoteRange)
-                }
-                return attributedString
-            } catch let error as NSError {
-                print(error.localizedDescription)
-                return nil
-            }
+        guard let comment = self.com else { return nil }
+        let attributedString = comment.html2AttributedString?.mutableCopy() as! NSMutableAttributedString
+
+        let foundQuotes = self.matchesForRegexInText(">>[0-9]+", text: attributedString.string)
+        foundQuotes.forEach { (quoteRange, quotedPost) in
+            let linkValue = "quote://\(quotedPost.substring(from: 2))"
+            attributedString.addAttribute(NSLinkAttributeName, value: linkValue, range: quoteRange)
         }
-        return NSAttributedString(string: "")
+        return attributedString
     }
 
     func getImageNameString() -> String? {
@@ -102,15 +93,25 @@ class Post: Mappable {
 
     func matchesForRegexInText(_ regex: String!, text: String!) -> [(NSRange, NSString)] {
         // TODO: move somewhere else
-        do {
-            let regex = try NSRegularExpression(pattern: regex, options: [])
-            let nsString = text as NSString
-            let results = regex.matches(in: text,
-                options: [], range: NSMakeRange(0, nsString.length))
-            return results.map { ($0.range, nsString.substring(with: $0.range) as NSString ) }
-        } catch let error as NSError {
-            print("invalid regex: \(error.localizedDescription)")
-            return []
-        }
+        guard let regex = try? NSRegularExpression(pattern: regex, options: []) else { return [] }
+
+        let nsString = text as NSString
+        let results = regex.matches(in: text,
+                                    options: [],
+                                    range: NSMakeRange(0, nsString.length))
+
+        return results.map { ($0.range, nsString.substring(with: $0.range) as NSString ) }
+    }
+}
+extension String {
+    var html2AttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return nil }
+        return try? NSAttributedString(data: data,
+                                       options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                                                 NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue],
+                                       documentAttributes: nil)
+    }
+    var html2String: String {
+        return html2AttributedString?.string ?? ""
     }
 }

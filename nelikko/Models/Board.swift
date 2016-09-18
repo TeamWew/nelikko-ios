@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 class Board: Mappable {
-    var board: String!
+    var board: String?
     var bump_limit: Int16?
     var image_limit: Int16?
     var is_archived: Bool?
@@ -44,6 +44,6 @@ class Board: Mappable {
     }
     
     func getTitleString() -> String {
-        return "/\(board)/ - \(title!)"
+        return "/\(board!)/ - \(title!)"
     }
 }

@@ -11,13 +11,12 @@ import Foundation
 
 class ThreadOPCell : UITableViewCell {
 
-    @IBOutlet var firstComment: UILabel!
-    @IBOutlet var opImageView: UIImageView!
-    @IBOutlet var subject: UILabel!
-    @IBOutlet var repliesLabel: UILabel!
-    @IBOutlet var nameLabel: UILabel!
-
-
+    @IBOutlet weak var firstComment: UILabel!
+    @IBOutlet weak var opImageView: UIImageView!
+    @IBOutlet weak var subject: UILabel!
+    @IBOutlet weak var repliesLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet var stickyLabel: UILabel!
 
     var imageUrl: String?
 
@@ -29,5 +28,4 @@ class ThreadOPCell : UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-
 }

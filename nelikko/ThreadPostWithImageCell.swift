@@ -9,6 +9,6 @@
 import UIKit
 
 class ThreadPostWithImageCell : ThreadPostCell {
-    @IBOutlet var postImageView: UIImageView!
+    @IBOutlet weak var postImageView: UIImageView!
 
 }

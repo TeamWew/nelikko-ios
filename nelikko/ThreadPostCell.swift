@@ -14,8 +14,8 @@ class ThreadPostCell : UITableViewCell {
     var imageUrl: String?
     var lastKnownPosition: Double?
 
-    @IBOutlet var postNumber: UILabel!
-    @IBOutlet var postCommentTextView: UITextView!
+    @IBOutlet weak var postNumber: UILabel!
+    @IBOutlet weak var postCommentTextView: UITextView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

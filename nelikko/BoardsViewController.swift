@@ -18,22 +18,20 @@ class BoardsViewController: UITableViewController {
 
     var boards = [Board]()
     var favorites = [Board]()
-    let API: BoardsAPI = BoardsAPI()
     var selectedBoard: Board?
     let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        func getBoardsCallback(_ boards: Array<Board>) {
-            self.boards = boards
-            self.refreshFavorites()
-            self.tableView.reloadData()
+        BoardsAPI.getAllWithCallBack() { [weak self] (boards: [Board]) in
+            self?.boards = boards
+            self?.refreshFavorites()
+            self?.tableView.reloadData()
         }
-        API.getAllWithCallBack(getBoardsCallback)
     }
-    
+
     func refreshFavorites() {
-        self.favorites = boards.filter {b in isFavorited(b.board)}
+        self.favorites = boards.filter {b in isFavorited(b.board!)}
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +39,7 @@ class BoardsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    //MARK: UITableViewDelegate
+    // MARK: UITableViewDelegate
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -80,12 +78,12 @@ class BoardsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = (indexPath as NSIndexPath).section == 0 ? self.favorites[(indexPath as NSIndexPath).row].getTitleString() : self.boards[(indexPath as NSIndexPath).row].getTitleString()
+        cell.textLabel?.text = indexPath.section == 0 ? self.favorites[indexPath.row].getTitleString() : self.boards[indexPath.row].getTitleString()
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedBoard = (indexPath as NSIndexPath).section == 0 ? self.favorites[(indexPath as NSIndexPath).row] : self.boards[(indexPath as NSIndexPath).row]
+        self.selectedBoard = indexPath.section == 0 ? self.favorites[indexPath.row] : self.boards[indexPath.row]
         performSegue(withIdentifier: "ThreadsSegue", sender: self)
         self.tableView.deselectRow(at: indexPath, animated: false)
     }
@@ -102,15 +100,14 @@ class BoardsViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         let text = cell?.textLabel?.text!
         let boardString = String(text!)
-        let boardIdentifier = boardString?.characters.split(separator: "/").map(String.init).first
+        let boardIdentifier = boardString!.characters.split(separator: "/").map(String.init).first
 
         let realm = try! Realm()
         if (isFavorited(boardIdentifier!)) {
+
             let unFavoriteAction = UITableViewRowAction(style: .normal, title: "Unfavorite") { (rowAction:UITableViewRowAction, indexPath:IndexPath) -> Void in
-                let b = realm.allDynamicObjects(ofType: "FavoritedBoard").filter(using: "identifier == '\(boardIdentifier)'").first!
-                try! realm.write {
-                    realm.delete(b)
-                }
+                let b = realm.dynamicObjects("FavoritedBoard").filter("identifier == '\(boardIdentifier!)'").first!
+                try! realm.write { realm.delete(b) }
                 let i = self.indexOfFavorite(boardIdentifier!)
                 self.favorites.remove(at: i)
                 tableView.setEditing(false, animated: true)
@@ -146,11 +143,13 @@ class BoardsViewController: UITableViewController {
             self.selectedBoard = nil
         }
     }
-    
+
     //MARK: Favorites utilities
     func isFavorited(_ identifier: String) -> Bool {
         let realm = try! Realm()
-        return realm.allDynamicObjects(ofType: "FavoritedBoard").filter(using: "identifier == '\(identifier)'").count > 0
+
+        return !realm.dynamicObjects("FavoritedBoard").filter("identifier == '\(identifier)'").isEmpty
+
     }
 
     @IBAction func testshit(_ sender: AnyObject) {

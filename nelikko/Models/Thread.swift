@@ -9,13 +9,15 @@
 import Foundation
 
 class Thread {
-    var op: Post
+    var op: Post! // Child
+    weak var board: Board! // Parent
+
     var no: Int
     var last_modified: Int?
     var tim: String?
 
-    var board: Board
-    var posts: Array<Post>? // Relation
+
+    var posts: [Post]? // Relation
     
     init(op: Post, board: Board, no: Int) {
         self.op = op

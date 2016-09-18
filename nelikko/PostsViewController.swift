@@ -11,11 +11,10 @@ import Foundation
 import Agrume
 
 class PostsViewController : UITableViewController {
-    let API: ThreadAPI = ThreadAPI()
     var thread: Thread?
     var postLocationMap = [Int: IndexPath]()
     var posts = [Post]()
-    var previousLocation: CGPoint?
+    var locationStack: [CGPoint] = []
     var backButton: UIButton?
 
     @IBOutlet var navBar: UINavigationItem!
@@ -41,7 +40,8 @@ class PostsViewController : UITableViewController {
     }
 
     func reloadThread() {
-        API.getPosts(forThread: self.thread!, withCallback: getPostsCallback)
+        guard let thread = self.thread else { return }
+        ThreadAPI.getPosts(forThread: thread, withCallback: getPostsCallback)
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,19 +50,21 @@ class PostsViewController : UITableViewController {
     }
 
     func scrollToPost(_ number:Int) {
-        if let indexPathFound = self.postLocationMap[number] {
-            self.tableView.scrollToRow(at: indexPathFound, at: UITableViewScrollPosition.top, animated: true)
-        }
+        guard let indexPathFound = self.postLocationMap[number] else { return }
+        self.tableView.scrollToRow(at: indexPathFound, at: UITableViewScrollPosition.top, animated: true)
     }
 
     func scrollToExitedPost() {
-        if self.previousLocation != nil {
-            self.tableView.setContentOffset(self.previousLocation!, animated: true)
+        guard let scrollLocation = locationStack.popLast() else { return }
+        self.tableView.setContentOffset(scrollLocation, animated: true)
+        if locationStack.isEmpty {
             self.backButton?.removeFromSuperview()
+            self.backButton = nil
         }
     }
 
     func createBackButton() {
+        guard backButton == nil else { return }
         let screenSize: CGRect = UIScreen.main.bounds
         let button: UIButton = UIButton(type: UIButtonType.custom) as UIButton
         button.frame = CGRect(x: screenSize.width - 50, y: screenSize.height - 50, width: 30, height: 30)
@@ -72,8 +74,9 @@ class PostsViewController : UITableViewController {
         button.layer.cornerRadius = 10
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.setBackgroundImage(UIImage(named: "downBackButton"), for: UIControlState())
+
         self.backButton = button
-        self.parent!.view.addSubview(button)
+        self.parent?.view.addSubview(button)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,8 +84,8 @@ class PostsViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let requestedPost = self.posts[(indexPath as NSIndexPath).row]
-        let attributedString = requestedPost.getAttributedComment()!
+        let requestedPost = self.posts[indexPath.row]
+        let attributedString = requestedPost.getAttributedComment()
 
         // Populate post's location map for later use in links
         self.postLocationMap[requestedPost.no] = indexPath
@@ -91,36 +94,37 @@ class PostsViewController : UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostImageOnlyCell", for: indexPath) as! ThreadPostImageOnlyCell
             cell.postImageView.contentMode = .scaleAspectFit
 
-            func setImage(_ data: Data) {
-                DispatchQueue.main.async(execute: {
-                    requestedPost.postImage = UIImage(data: data)
-                    cell.postImageView!.image = requestedPost.postImage
-                    print("assigned")
-                })
-            }
             if requestedPost.postImage == nil {
                 cell.postImageView?.image = nil
-                API.getImage(forPost: requestedPost, withCallback: setImage)
+                ImageAPI.getImage(forPost: requestedPost) {[weak cell, weak requestedPost] (data: Data) in
+                    requestedPost?.postImage = UIImage(data: data)
+                    DispatchQueue.main.sync {
+                        cell?.postImageView!.image = requestedPost?.postImage
+                    }}
             }
             else {
                 cell.postImageView?.image = requestedPost.postImage
             }
-            
+
             return cell
         }
         else if let _ = requestedPost.tim {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostImageCell", for: indexPath) as! ThreadPostWithImageCell
 
-            func setImage(_ data: Data) {
-                requestedPost.postImage = UIImage(data: data)
-                cell.postImageView?.image = requestedPost.postImage
-            }
             if requestedPost.postImage == nil {
                 cell.postImageView?.image = nil
-                API.getThumbnailImage(forPost: requestedPost, withCallback: setImage)
+                ImageAPI.getThumbnailImage(forPost: requestedPost) {[weak cell, weak requestedPost] (data: Data) in
+                    requestedPost?.thumbnail = UIImage(data: data)
+                    DispatchQueue.main.sync {
+                        cell?.postImageView?.image = requestedPost?.thumbnail
+                    }
+                }
+                ImageAPI.getImage(forPost: requestedPost) { [weak requestedPost] (data: Data) in
+                    requestedPost?.postImage = UIImage(data: data)
+                }
             }
             else {
-                cell.postImageView?.image = requestedPost.postImage
+                cell.postImageView?.image = requestedPost.thumbnail
             }
             cell.postCommentTextView.attributedText = attributedString
             cell.postNumber?.text = String(requestedPost.no)
@@ -137,29 +141,23 @@ class PostsViewController : UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedPost: Post = self.posts[(indexPath as NSIndexPath).row]
+        let selectedPost = self.posts[indexPath.row]
+        guard let image = selectedPost.postImage else { return }
+        let agWindow = Agrume(image: image)
+        agWindow.showFrom(self)
         self.tableView.deselectRow(at: indexPath, animated: false)
-        if let _ = selectedPost.postImage {
-            let imageName = selectedPost.getImageNameString()!
-            let url = "https://i.4cdn.org/\(selectedPost.thread!.board.board)/\(imageName)"
-
-            let agWindow = Agrume(imageUrl: URL(string: url)!)
-            agWindow.showFrom(self)
-        }
     }
-
 }
 
 extension PostsViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        let urlSplit = URL.absoluteString.characters.split{$0 == ":"}.map(String.init)
-        if urlSplit.first! == "quote" {
-            let postNumberString = urlSplit.last! as NSString
-            self.scrollToPost(Int(postNumberString.substring(from: 2))!)
-            self.previousLocation = self.tableView.contentOffset
-            self.createBackButton()
-            return false
-        }
+        let urlSplit = URL.absoluteString.characters.split(separator: ":").map(String.init)
+        guard urlSplit.first == "quote" else { return false }
+
+        let postNumberString = urlSplit.last! as NSString
+        self.scrollToPost(Int(postNumberString.substring(from: 2))!)
+        self.locationStack.append(self.tableView.contentOffset)
+        self.createBackButton()
         return true
     }
 }

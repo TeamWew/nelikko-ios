@@ -10,5 +10,5 @@ import UIKit
 import Foundation
 
 class ThreadPostImageOnlyCell : ThreadPostCell {
-    @IBOutlet var postImageView: UIImageView!
+    @IBOutlet weak var postImageView: UIImageView!
 }
