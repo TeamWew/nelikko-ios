@@ -44,11 +44,6 @@ class PostsViewController : UITableViewController {
         ThreadAPI.getPosts(forThread: thread, withCallback: getPostsCallback)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func scrollToPost(_ number:Int) {
         guard let indexPathFound = self.postLocationMap[number] else { return }
         self.tableView.scrollToRow(at: indexPathFound, at: UITableViewScrollPosition.top, animated: true)
@@ -83,14 +78,25 @@ class PostsViewController : UITableViewController {
         return self.posts.count
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let post = self.posts[indexPath.row]
+        guard let height = post.h, let width = post.w, post.com == nil else {
+            // Let autolayout et al. handle the estimated height in case the post isn't an image-only post
+            return super.tableView(tableView, heightForRowAt: indexPath)
+        }
+        let adjustedHeight = CGFloat(height) * (self.view.frame.width / CGFloat(width))
+        return adjustedHeight
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let requestedPost = self.posts[indexPath.row]
-        let attributedString = requestedPost.getAttributedComment()
+        let attributedString = requestedPost.attributedComment
 
         // Populate post's location map for later use in links
         self.postLocationMap[requestedPost.no] = indexPath
 
-        if requestedPost.com == nil {
+        switch requestedPost.style {
+        case .ImageOnly:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostImageOnlyCell", for: indexPath) as! ThreadPostImageOnlyCell
             cell.postImageView.contentMode = .scaleAspectFit
 
@@ -98,26 +104,23 @@ class PostsViewController : UITableViewController {
                 cell.postImageView?.image = nil
                 ImageAPI.getImage(forPost: requestedPost) {[weak cell, weak requestedPost] (data: Data) in
                     requestedPost?.postImage = UIImage(data: data)
-                    DispatchQueue.main.sync {
-                        cell?.postImageView!.image = requestedPost?.postImage
-                    }}
+                    DispatchQueue.main.sync { cell?.postImageView!.image = requestedPost?.postImage }
+                }
             }
             else {
                 cell.postImageView?.image = requestedPost.postImage
             }
-
+            cell.postNumber?.text = String(requestedPost.no)
             return cell
-        }
-        else if let _ = requestedPost.tim {
+        case .ImageWithText:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostImageCell", for: indexPath) as! ThreadPostWithImageCell
 
             if requestedPost.postImage == nil {
                 cell.postImageView?.image = nil
+
                 ImageAPI.getThumbnailImage(forPost: requestedPost) {[weak cell, weak requestedPost] (data: Data) in
                     requestedPost?.thumbnail = UIImage(data: data)
-                    DispatchQueue.main.sync {
-                        cell?.postImageView?.image = requestedPost?.thumbnail
-                    }
+                    DispatchQueue.main.sync { cell?.postImageView?.image = requestedPost?.thumbnail }
                 }
                 ImageAPI.getImage(forPost: requestedPost) { [weak requestedPost] (data: Data) in
                     requestedPost?.postImage = UIImage(data: data)
@@ -130,8 +133,7 @@ class PostsViewController : UITableViewController {
             cell.postNumber?.text = String(requestedPost.no)
             cell.postCommentTextView.font = UIFont.systemFont(ofSize: 14.0)
             return cell
-        }
-        else {
+        default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! ThreadPostCell
             cell.postCommentTextView.attributedText = attributedString
             cell.postNumber?.text = String(requestedPost.no)
@@ -142,7 +144,10 @@ class PostsViewController : UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedPost = self.posts[indexPath.row]
-        guard let image = selectedPost.postImage else { return }
+        guard let image = selectedPost.postImage else {
+            self.tableView.deselectRow(at: indexPath, animated: false)
+            return
+        }
         let agWindow = Agrume(image: image)
         agWindow.showFrom(self)
         self.tableView.deselectRow(at: indexPath, animated: false)
