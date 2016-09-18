@@ -7,9 +7,10 @@
 //
 import Foundation
 class ImageAPI {
+    static let baseURL = "https://i.4cdn.org"
     class func getThumbnailImage(forPost post: Post, withCallback completion: @escaping ((Data) -> Void)) {
         guard let imageName = post.thumbnailNameString, let board = post.thread?.board.board else { return }
-        let url = URL(string: "https://i.4cdn.org/\(board)/\(imageName)")!
+        let url = URL(string: "\(baseURL)/\(board)/\(imageName)")!
         makeRequest(url) { data in
             completion(data)
         }
@@ -17,7 +18,7 @@ class ImageAPI {
 
     class func getImage(forPost post: Post, withCallback completion: @escaping ((Data) -> Void)) {
         guard let imageName = post.imageNameString, let board = post.thread?.board.board else { return }
-        let url = URL(string: "https://i.4cdn.org/\(board)/\(imageName)")!
+        let url = URL(string: "\(baseURL)/\(board)/\(imageName)")!
         makeRequest(url) { data in
             completion(data)
         }
