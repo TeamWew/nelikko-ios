@@ -78,23 +78,11 @@ class Post: Mappable {
     var imageNameString: String? { return "\(tim!)\(ext!)" }
     var thumbnailNameString: String? { return "\(tim!)s.jpg" }
 
-    func matchesForRegexInText(_ regex: String!, text: String!) -> [(NSRange, NSString)] {
-        // TODO: move somewhere else
-        guard let regex = try? NSRegularExpression(pattern: regex, options: []) else { return [] }
-
-        let nsString = text as NSString
-        let results = regex.matches(in: text,
-                                    options: [],
-                                    range: NSMakeRange(0, nsString.length))
-
-        return results.map { ($0.range, nsString.substring(with: $0.range) as NSString ) }
-    }
-
     lazy var attributedComment: NSAttributedString = {
         guard let comment = self.com else { return NSAttributedString() }
 
         let attributedString = comment.html2AttributedString?.mutableCopy() as! NSMutableAttributedString
-        let foundQuotes = self.matchesForRegexInText(">>[0-9]+", text: attributedString.string)
+        let foundQuotes = attributedString.string.matchesForRegexInText(">>[0-9]+")
 
         foundQuotes.forEach { (quoteRange, quotedPost) in
             let linkValue = "quote://\(quotedPost.substring(from: 2))"
@@ -114,7 +102,7 @@ class Post: Mappable {
     }()
 }
 
-extension String {
+private extension String {
     var html2AttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return nil }
         return try? NSAttributedString(data: data,
@@ -124,5 +112,16 @@ extension String {
     }
     var html2String: String {
         return html2AttributedString?.string ?? ""
+    }
+
+    func matchesForRegexInText(_ regex: String!) -> [(NSRange, NSString)] {
+        guard let regex = try? NSRegularExpression(pattern: regex, options: []) else { return [] }
+
+        let nsString = self as NSString
+        let results = regex.matches(in: self,
+                                    options: [],
+                                    range: NSMakeRange(0, nsString.length))
+
+        return results.map { ($0.range, nsString.substring(with: $0.range) as NSString ) }
     }
 }
