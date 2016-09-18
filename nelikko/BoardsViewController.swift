@@ -78,7 +78,7 @@ class BoardsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = indexPath.section == 0 ? self.favorites[indexPath.row].getTitleString() : self.boards[indexPath.row].getTitleString()
+        cell.textLabel?.text = indexPath.section == 0 ? self.favorites[indexPath.row].titleString : self.boards[indexPath.row].titleString
         return cell
     }
 

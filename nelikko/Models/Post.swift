@@ -71,6 +71,9 @@ class Post: Mappable {
         images <- map["images"]
     }
 
+    var imageNameString: String? { return "\(tim!)\(ext!)" }
+    var thumbnailNameString: String? { return "\(tim!)s.jpg" }
+
     func getAttributedComment() -> NSAttributedString? {
         guard let comment = self.com else { return nil }
         let attributedString = comment.html2AttributedString?.mutableCopy() as! NSMutableAttributedString
@@ -83,13 +86,6 @@ class Post: Mappable {
         return attributedString
     }
 
-    func getImageNameString() -> String? {
-        return "\(tim!)\(ext!)"
-    }
-
-    func getThumbnailImageNameString() -> String? {
-        return "\(tim!)s.jpg"
-    }
 
     func matchesForRegexInText(_ regex: String!, text: String!) -> [(NSRange, NSString)] {
         // TODO: move somewhere else
@@ -103,6 +99,7 @@ class Post: Mappable {
         return results.map { ($0.range, nsString.substring(with: $0.range) as NSString ) }
     }
 }
+
 extension String {
     var html2AttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return nil }

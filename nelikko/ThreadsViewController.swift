@@ -25,7 +25,7 @@ class ThreadsViewController: UITableViewController {
         self.refreshControl?.addTarget(self, action: #selector(ThreadsViewController.reloadThreads), for: UIControlEvents.valueChanged)
 
 
-        self.navBar.title = self.board?.getTitleString()
+        self.navBar.title = self.board?.titleString
         self.reloadThreads()
     }
 

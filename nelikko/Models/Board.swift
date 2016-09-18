@@ -42,8 +42,8 @@ class Board: Mappable {
         title <- map["title"]
         ws_board <- map["ws_board"]
     }
-    
-    func getTitleString() -> String {
+
+    var titleString: String {
         return "/\(board!)/ - \(title!)"
     }
 }
