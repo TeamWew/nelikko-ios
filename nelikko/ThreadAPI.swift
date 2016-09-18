@@ -9,11 +9,12 @@
 import Foundation
 import Alamofire
 import ObjectMapper
+import UIKit
 
 class ThreadAPI {
 
-    func getAll(forBoard board: Board, withCallback completion: (([Thread]) -> Void)!){
-        let url = "https://a.4cdn.org/\(board.board)/1.json"
+    class func getAll(forBoard board: Board, withCallback completion: (([Thread]) -> Void)!){
+        let url = "https://a.4cdn.org/\(board.board!)/1.json"
         Alamofire.request(url).responseJSON { response in
             if let JSON = response.result.value as? NSDictionary, let threads = JSON["threads"] as? NSArray {
                 let mappedThreads = threads.map {(thread) -> Thread in
@@ -29,40 +30,17 @@ class ThreadAPI {
         }
     }
 
-    func getPosts(forThread thread: Thread, withCallback completion: (([Post]) -> Void)!) {
-        let url = "https://a.4cdn.org/\(thread.board.board)/thread/\(thread.no).json"
-        var destinationPosts: Array<Post> = []
+    class func getPosts(forThread thread: Thread, withCallback completion: (([Post]) -> Void)!) {
+        let url = "https://a.4cdn.org/\(thread.board.board!)/thread/\(thread.no).json"
         Alamofire.request(url)
             .responseJSON { response in
-                if let JSON = response.result.value as? NSDictionary {
-                    let posts = JSON["posts"] as? NSArray
-                    for post in posts! {
-                        let p = Mapper<Post>().map(JSONObject: post)!
-                        p.thread = thread
-                        destinationPosts.append(p)
-                    }
+                guard let postsJSON = (response.result.value as? NSDictionary)?["posts"] as? NSArray else { return }
+                let posts = postsJSON.map { post -> Post in
+                    let p = Mapper<Post>().map(JSONObject: post)!
+                    p.thread = thread
+                    return p
                 }
-                completion(destinationPosts)
+                completion(posts)
             }
         }
-
-    func getThumbnailImage(forPost post: Post, withCallback completion: @escaping ((Data) -> Void)) {
-        guard let imageName = post.getThumbnailImageNameString(), let board = post.thread?.board.board else { return }
-        let url = "https://i.4cdn.org/\(board)/\(imageName)"
-        Alamofire.download(url)
-            .responseData { response in
-                guard let imageData = response.result.value else { return }
-                completion(imageData)
-            }
-    }
-
-    func getImage(forPost post: Post, withCallback completion: @escaping ((Data) -> Void)) {
-        guard let imageName = post.getImageNameString(), let board = post.thread?.board.board else { return }
-        let url = "https://i.4cdn.org/\(board)/\(imageName)"
-        Alamofire.download(url)
-            .responseData { response in
-                guard let imageData = response.result.value else { return }
-                completion(imageData)
-        }
-    }
 }
