@@ -77,7 +77,7 @@ class BoardsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BoardCell") else { return UITableViewCell() }
         cell.textLabel?.text = indexPath.section == 0 ? self.favorites[indexPath.row].titleString : self.boards[indexPath.row].titleString
         return cell
     }

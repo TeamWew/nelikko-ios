@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mn1-HB-0uw">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -43,12 +42,21 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="gH6-2r-354">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BoardCell" textLabel="jHh-ne-0iq" style="IBUITableViewCellStyleDefault" id="gH6-2r-354">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gH6-2r-354" id="AVZ-MD-xfh">
-                                    <frame key="frameInset" width="342" height="44"/>
+                                    <frame key="frameInset" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jHh-ne-0iq">
+                                            <frame key="frameInset" minX="15" width="325" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -61,6 +69,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="nelikko" id="z1N-Uk-Zdi">
                         <barButtonItem key="rightBarButtonItem" title="☰" id="kwr-OW-aqc">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="57a-hT-1Ht" kind="presentation" id="7wT-NZ-hw4"/>
                             </connections>
@@ -590,10 +599,10 @@
         <scene sceneID="Nwn-mD-d8Z">
             <objects>
                 <navigationController id="mn1-HB-0uw" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="isA-5r-B7X">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="isA-5r-B7X">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.61212105819999996" green="0.95488083960000003" blue="0.31135134170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.61212105819999996" green="0.95488083960000003" blue="0.31135134170000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="tWP-fM-E1f"/>
@@ -616,7 +625,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="177"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rYC-oF-V6d" id="Btv-9e-AUH">
-                                    <frame key="frameInset" width="375" height="176"/>
+                                    <frame key="frameInset" width="375" height="177"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QqI-XM-PgE" userLabel="Subject">
@@ -725,32 +734,32 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="Zsk-V9-uuy"/>
-                                            <exclude reference="gXd-Sv-AqM"/>
-                                            <exclude reference="1jN-ZY-eRy"/>
-                                            <exclude reference="29K-Hy-bdu"/>
-                                            <exclude reference="zYf-fd-0YX"/>
                                             <exclude reference="PeI-Zp-Yie"/>
                                             <exclude reference="TFq-VF-kIW"/>
                                             <exclude reference="XTo-y7-mdO"/>
                                             <exclude reference="aZJ-5I-kBY"/>
                                             <exclude reference="ph4-ft-tKn"/>
                                             <exclude reference="yGU-80-TUm"/>
+                                            <exclude reference="1jN-ZY-eRy"/>
+                                            <exclude reference="29K-Hy-bdu"/>
+                                            <exclude reference="zYf-fd-0YX"/>
+                                            <exclude reference="Zsk-V9-uuy"/>
+                                            <exclude reference="gXd-Sv-AqM"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
                                         <mask key="constraints">
-                                            <include reference="Zsk-V9-uuy"/>
-                                            <include reference="gXd-Sv-AqM"/>
-                                            <include reference="1jN-ZY-eRy"/>
-                                            <include reference="29K-Hy-bdu"/>
-                                            <include reference="zYf-fd-0YX"/>
                                             <include reference="PeI-Zp-Yie"/>
                                             <exclude reference="TFq-VF-kIW"/>
                                             <include reference="XTo-y7-mdO"/>
                                             <include reference="aZJ-5I-kBY"/>
                                             <exclude reference="ph4-ft-tKn"/>
                                             <include reference="yGU-80-TUm"/>
+                                            <include reference="1jN-ZY-eRy"/>
+                                            <include reference="29K-Hy-bdu"/>
+                                            <include reference="zYf-fd-0YX"/>
+                                            <include reference="Zsk-V9-uuy"/>
+                                            <include reference="gXd-Sv-AqM"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -773,6 +782,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="nelikko" id="3jC-OK-isA">
                         <barButtonItem key="rightBarButtonItem" title="☰" id="oKM-Tl-deT">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="57a-hT-1Ht" kind="presentation" id="e61-md-pOS"/>
                             </connections>
@@ -884,6 +894,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="e61-md-pOS"/>
+        <segue reference="7wT-NZ-hw4"/>
     </inferredMetricsTieBreakers>
 </document>
