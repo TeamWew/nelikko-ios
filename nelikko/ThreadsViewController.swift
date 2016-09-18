@@ -76,9 +76,7 @@ class ThreadsViewController: UITableViewController {
                 ImageAPI.getThumbnailImage(forPost: requestedThread.op) { [weak cell, weak requestedThread] (data: Data) in
                         let image = UIImage(data: data)
                         requestedThread?.op.postImage = image
-                        DispatchQueue.main.sync {
-                            cell?.opImageView?.image = requestedThread?.op.postImage
-                        }
+                        DispatchQueue.main.sync { cell?.opImageView?.image = requestedThread?.op.postImage }
                 }
             }
         }
@@ -86,7 +84,7 @@ class ThreadsViewController: UITableViewController {
             cell.opImageView?.image = requestedThread.op.postImage
         }
 
-        cell.firstComment.attributedText = requestedThread.op.getAttributedComment()
+        cell.firstComment.attributedText = requestedThread.op.attributedComment
         cell.firstComment.font = UIFont.systemFont(ofSize: 12.0)
         cell.subject?.text = requestedThread.op.sub
         cell.repliesLabel?.text = String(requestedThread.op.replies!) + " replies"
