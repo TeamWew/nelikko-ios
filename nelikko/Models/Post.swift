@@ -10,6 +10,11 @@ import UIKit
 import Foundation
 import ObjectMapper
 
+enum PostStyle {
+    case ImageOnly
+    case ImageWithText
+    case TextOnly
+}
 
 class Post: Mappable {
 
@@ -41,8 +46,7 @@ class Post: Mappable {
     var thumbnail: UIImage?
     var postImage: UIImage?
 
-    required init?(map: Map){
-
+    required init?(map: Map) {
     }
 
     func mapping(map: Map) {
@@ -74,19 +78,6 @@ class Post: Mappable {
     var imageNameString: String? { return "\(tim!)\(ext!)" }
     var thumbnailNameString: String? { return "\(tim!)s.jpg" }
 
-    func getAttributedComment() -> NSAttributedString? {
-        guard let comment = self.com else { return nil }
-        let attributedString = comment.html2AttributedString?.mutableCopy() as! NSMutableAttributedString
-
-        let foundQuotes = self.matchesForRegexInText(">>[0-9]+", text: attributedString.string)
-        foundQuotes.forEach { (quoteRange, quotedPost) in
-            let linkValue = "quote://\(quotedPost.substring(from: 2))"
-            attributedString.addAttribute(NSLinkAttributeName, value: linkValue, range: quoteRange)
-        }
-        return attributedString
-    }
-
-
     func matchesForRegexInText(_ regex: String!, text: String!) -> [(NSRange, NSString)] {
         // TODO: move somewhere else
         guard let regex = try? NSRegularExpression(pattern: regex, options: []) else { return [] }
@@ -98,6 +89,29 @@ class Post: Mappable {
 
         return results.map { ($0.range, nsString.substring(with: $0.range) as NSString ) }
     }
+
+    lazy var attributedComment: NSAttributedString = {
+        guard let comment = self.com else { return NSAttributedString() }
+
+        let attributedString = comment.html2AttributedString?.mutableCopy() as! NSMutableAttributedString
+        let foundQuotes = self.matchesForRegexInText(">>[0-9]+", text: attributedString.string)
+
+        foundQuotes.forEach { (quoteRange, quotedPost) in
+            let linkValue = "quote://\(quotedPost.substring(from: 2))"
+            attributedString.addAttribute(NSLinkAttributeName, value: linkValue, range: quoteRange)
+        }
+        return attributedString
+    }()
+
+    lazy var style: PostStyle = {
+        if self.tim == nil {
+            return .TextOnly
+        }
+        else if self.com == nil && self.tim != nil {
+            return .ImageOnly
+        }
+        return .ImageWithText
+    }()
 }
 
 extension String {
