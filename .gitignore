@@ -27,3 +27,4 @@ xcuserdata
 xcuserdata/
 Pods/
 .DS_Store
+Carthage
