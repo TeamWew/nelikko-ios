@@ -14,7 +14,7 @@ import UIKit
 class ThreadAPI {
 
     class func getAll(forBoard board: Board, withCallback completion: (([Thread]) -> Void)!){
-        let url = "https://a.4cdn.org/\(board.board!)/1.json"
+        let url = "https://a.4cdn.org/\(board.id!)/1.json"
         Alamofire.request(url).responseJSON { response in
             if let JSON = response.result.value as? NSDictionary, let threads = JSON["threads"] as? NSArray {
                 let mappedThreads = threads.map {(thread) -> Thread in
@@ -31,7 +31,7 @@ class ThreadAPI {
     }
 
     class func getPosts(forThread thread: Thread, withCallback completion: (([Post]) -> Void)!) {
-        let url = "https://a.4cdn.org/\(thread.board.board!)/thread/\(thread.no).json"
+        let url = "https://a.4cdn.org/\(thread.board.id!)/thread/\(thread.no).json"
         Alamofire.request(url)
             .responseJSON { response in
                 guard let postsJSON = (response.result.value as? NSDictionary)?["posts"] as? NSArray else { return }

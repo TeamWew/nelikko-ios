@@ -31,7 +31,7 @@ class BoardsViewController: UITableViewController {
     }
 
     func refreshFavorites() {
-        self.favorites = boards.filter {b in isFavorited(b.board!)}
+        self.favorites = boards.filter {b in isFavorited(b.id!)}
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,7 +69,7 @@ class BoardsViewController: UITableViewController {
     func indexOfFavorite(_ identifier: String) -> Int {
         var i = 0
         for (x, b) in self.favorites.enumerated() {
-            if b.board == identifier {
+            if b.id == identifier {
                 i = x
             }
         }

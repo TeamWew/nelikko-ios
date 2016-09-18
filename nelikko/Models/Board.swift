@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 class Board: Mappable {
-    var board: String?
+    var id: String?
     var bump_limit: Int16?
     var image_limit: Int16?
     var is_archived: Bool?
@@ -29,7 +29,7 @@ class Board: Mappable {
     }
 
     func mapping(map: Map) {
-        board <- map["board"]
+        id <- map["board"]
         bump_limit <- map["bump_limit"]
         image_limit <- map["image_limit"]
         is_archived <- map["is_archived"]
@@ -44,6 +44,6 @@ class Board: Mappable {
     }
 
     var titleString: String {
-        return "/\(board!)/ - \(title!)"
+        return "/\(id!)/ - \(title!)"
     }
 }
