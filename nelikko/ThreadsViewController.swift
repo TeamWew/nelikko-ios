@@ -24,7 +24,6 @@ class ThreadsViewController: UITableViewController {
         self.refreshControl?.tintColor = UIColor.green
         self.refreshControl?.addTarget(self, action: #selector(ThreadsViewController.reloadThreads), for: UIControlEvents.valueChanged)
 
-
         self.navBar.title = self.board?.titleString
         self.reloadThreads()
     }
@@ -35,11 +34,6 @@ class ThreadsViewController: UITableViewController {
             self?.tableView.reloadData()
             self?.refreshControl?.endRefreshing()
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

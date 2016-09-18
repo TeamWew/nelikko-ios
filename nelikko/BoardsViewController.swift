@@ -34,11 +34,6 @@ class BoardsViewController: UITableViewController {
         self.favorites = boards.filter {b in isFavorited(b.id!)}
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: UITableViewDelegate
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -130,7 +125,6 @@ class BoardsViewController: UITableViewController {
             }
             favoriteAction.backgroundColor = UIColor(red: 252.0/255.0, green: 194.0/255.0, blue: 0, alpha: 1) // golden
             return [favoriteAction]
-            
         }
     }
 
