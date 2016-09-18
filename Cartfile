@@ -1,0 +1,7 @@
+github "bustoutsolutions/siesta" "1.0-rc.0"
+github "Raizlabs/BonMot"
+github "JanGorman/Agrume"
+github "Hearst-DD/ObjectMapper" ~> 2.0
+github "realm/realm-cocoa"
+github "Alamofire/Alamofire" ~> 4.0
+

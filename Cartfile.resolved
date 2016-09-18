@@ -1,0 +1,6 @@
+github "JanGorman/Agrume" "3.0.1"
+github "Alamofire/Alamofire" "4.0.0"
+github "Raizlabs/BonMot" "3.2"
+github "Hearst-DD/ObjectMapper" "2.0.0"
+github "realm/realm-cocoa" "v1.1.0"
+github "bustoutsolutions/siesta" "1.0-rc.0"
