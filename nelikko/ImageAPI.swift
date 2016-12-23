@@ -26,8 +26,8 @@ class ImageAPI {
 
     private class func makeRequest(_ url: URL, completionHandler: @escaping (Data) -> Void) {
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        let task = session.dataTask(with: url) { (data, response, error) in
-            guard let imageData = data else {return}
+        let task = session.dataTask(with: url) { (data, _, _) in
+            guard let imageData = data else { return }
             completionHandler(imageData)
         }
         task.resume()

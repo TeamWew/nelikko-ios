@@ -60,18 +60,20 @@ class PostsViewController : UITableViewController {
 
     func createBackButton() {
         guard backButton == nil else { return }
-        let screenSize: CGRect = UIScreen.main.bounds
-        let button: UIButton = UIButton(type: UIButtonType.custom) as UIButton
-        button.frame = CGRect(x: screenSize.width - 50, y: screenSize.height - 50, width: 30, height: 30)
-        button.addTarget(self, action:#selector(PostsViewController.scrollToExitedPost), for: UIControlEvents.touchUpInside)
-        button.backgroundColor = UIColor.white
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 10
-        button.layer.borderColor = UIColor.lightGray.cgColor
-        button.setBackgroundImage(UIImage(named: "downBackButton"), for: UIControlState())
 
-        self.backButton = button
-        self.parent?.view.addSubview(button)
+        self.backButton = {
+            let screenSize: CGRect = UIScreen.main.bounds
+            let button: UIButton = UIButton(type: UIButtonType.custom) as UIButton
+            button.frame = CGRect(x: screenSize.width - 50, y: screenSize.height - 50, width: 30, height: 30)
+            button.addTarget(self, action:#selector(PostsViewController.scrollToExitedPost), for: UIControlEvents.touchUpInside)
+            button.backgroundColor = UIColor.white
+            button.layer.borderWidth = 1
+            button.layer.cornerRadius = 10
+            button.layer.borderColor = UIColor.lightGray.cgColor
+            button.setBackgroundImage(UIImage(named: "downBackButton"), for: UIControlState())
+            return button
+        }()
+        self.parent?.view.addSubview(self.backButton!)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,34 +102,19 @@ class PostsViewController : UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostImageOnlyCell", for: indexPath) as! ThreadPostImageOnlyCell
             cell.postImageView.contentMode = .scaleAspectFit
 
-            if requestedPost.postImage == nil {
-                cell.postImageView?.image = nil
-                ImageAPI.getImage(forPost: requestedPost) {[weak cell, weak requestedPost] (data: Data) in
-                    requestedPost?.postImage = UIImage(data: data)
-                    DispatchQueue.main.sync { cell?.postImageView!.image = requestedPost?.postImage }
-                }
-            }
-            else {
-                cell.postImageView?.image = requestedPost.postImage
+            cell.postImageView.image = requestedPost.postImage
+            if cell.postImageView?.image == nil {
+                getImage(forCell: cell, post: requestedPost)
             }
             cell.postNumber?.text = String(requestedPost.no)
             return cell
         case .ImageWithText:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostImageCell", for: indexPath) as! ThreadPostWithImageCell
 
-            if requestedPost.postImage == nil {
-                cell.postImageView?.image = nil
-
-                ImageAPI.getThumbnailImage(forPost: requestedPost) {[weak cell, weak requestedPost] (data: Data) in
-                    requestedPost?.thumbnail = UIImage(data: data)
-                    DispatchQueue.main.sync { cell?.postImageView?.image = requestedPost?.thumbnail }
-                }
-                ImageAPI.getImage(forPost: requestedPost) { [weak requestedPost] (data: Data) in
-                    requestedPost?.postImage = UIImage(data: data)
-                }
-            }
-            else {
-                cell.postImageView?.image = requestedPost.thumbnail
+            cell.postImageView?.image = requestedPost.thumbnail
+            if cell.postImageView?.image == nil {
+                getThumbnailImage(forCell: cell, post: requestedPost)
+                getImage(forCell: cell, post: requestedPost)
             }
             cell.postCommentTextView.attributedText = attributedString
             cell.postNumber?.text = String(requestedPost.no)
@@ -139,6 +126,20 @@ class PostsViewController : UITableViewController {
             cell.postNumber?.text = String(requestedPost.no)
             cell.postCommentTextView.font = UIFont.systemFont(ofSize: 14.0)
             return cell
+        }
+    }
+
+    private func getImage(forCell cell: PostCellWithImage?, post: Post) {
+        ImageAPI.getImage(forPost: post) {[weak cell] (data: Data) in
+            post.postImage = UIImage(data: data)
+            DispatchQueue.main.async { cell?.postImageView?.image = post.postImage }
+        }
+    }
+
+    private func getThumbnailImage(forCell cell: PostCellWithImage?, post: Post) {
+        ImageAPI.getThumbnailImage(forPost: post) {[weak cell] (data: Data) in
+            post.thumbnail = UIImage(data: data)
+            DispatchQueue.main.async { cell?.postImageView?.image = post.thumbnail }
         }
     }
 
@@ -164,5 +165,9 @@ extension PostsViewController: UITextViewDelegate {
         self.locationStack.append(self.tableView.contentOffset)
         self.createBackButton()
         return true
+    }
+
+    func paska<T>(lol: T) -> T {
+        return lol
     }
 }

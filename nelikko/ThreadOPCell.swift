@@ -9,10 +9,15 @@
 import UIKit
 import Foundation
 
-class ThreadOPCell : UITableViewCell {
+
+protocol PostCellWithImage: class {
+    var postImageView: UIImageView! { get set }
+}
+
+class ThreadOPCell : UITableViewCell, PostCellWithImage {
 
     @IBOutlet weak var firstComment: UILabel!
-    @IBOutlet weak var opImageView: UIImageView!
+    @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var subject: UILabel!
     @IBOutlet weak var repliesLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
