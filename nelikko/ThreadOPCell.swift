@@ -9,12 +9,11 @@
 import UIKit
 import Foundation
 
-
 protocol PostCellWithImage: class {
     var postImageView: UIImageView! { get set }
 }
 
-class ThreadOPCell : UITableViewCell, PostCellWithImage {
+class ThreadOPCell: UITableViewCell, PostCellWithImage {
 
     @IBOutlet weak var firstComment: UILabel!
     @IBOutlet weak var postImageView: UIImageView!

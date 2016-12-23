@@ -23,9 +23,8 @@ class Board: Mappable {
     var title: String?
     var ws_board: Bool?
     var threads: NSSet? // Relation
-    
-    required init?(map: Map){
-        
+
+    required init?(map: Map) {
     }
 
     func mapping(map: Map) {

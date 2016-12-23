@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mn1-HB-0uw">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mn1-HB-0uw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -31,7 +31,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tYU-Ke-0Rg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1386" y="-426"/>
+            <point key="canvasLocation" x="1543" y="-476"/>
         </scene>
         <!--Boards-->
         <scene sceneID="tne-QT-ifu">
@@ -355,14 +355,14 @@
                                             <exclude reference="Rto-DV-WHC"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="RgL-zo-0mM"/>
-                                            <exclude reference="kRx-iq-JIZ"/>
                                             <exclude reference="0yH-w7-YB7"/>
                                             <exclude reference="JEb-Gr-WbH"/>
                                             <exclude reference="l6T-VY-42x"/>
                                             <exclude reference="ns1-Bw-ft0"/>
                                             <exclude reference="qyY-bK-c24"/>
                                             <exclude reference="xdb-0g-ILF"/>
+                                            <exclude reference="RgL-zo-0mM"/>
+                                            <exclude reference="kRx-iq-JIZ"/>
                                             <exclude reference="9BO-6f-mlt"/>
                                             <exclude reference="YLW-Qg-F5c"/>
                                             <exclude reference="g7D-En-9z5"/>
@@ -375,14 +375,14 @@
                                             <include reference="Rto-DV-WHC"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="RgL-zo-0mM"/>
-                                            <include reference="kRx-iq-JIZ"/>
                                             <include reference="0yH-w7-YB7"/>
                                             <include reference="JEb-Gr-WbH"/>
                                             <exclude reference="l6T-VY-42x"/>
                                             <include reference="ns1-Bw-ft0"/>
                                             <include reference="qyY-bK-c24"/>
                                             <exclude reference="xdb-0g-ILF"/>
+                                            <include reference="RgL-zo-0mM"/>
+                                            <include reference="kRx-iq-JIZ"/>
                                             <include reference="9BO-6f-mlt"/>
                                             <include reference="YLW-Qg-F5c"/>
                                             <include reference="g7D-En-9z5"/>
@@ -592,7 +592,7 @@
         <scene sceneID="Nwn-mD-d8Z">
             <objects>
                 <navigationController id="mn1-HB-0uw" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="isA-5r-B7X">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="isA-5r-B7X">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.61212105819999996" green="0.95488083960000003" blue="0.31135134170000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -759,7 +759,7 @@
                                 <connections>
                                     <outlet property="firstComment" destination="Abn-gS-eEV" id="QtQ-32-Bgz"/>
                                     <outlet property="nameLabel" destination="UVc-Bo-k6G" id="cZh-M1-QQN"/>
-                                    <outlet property="opImageView" destination="Noc-0e-dYn" id="5zz-n5-MJu"/>
+                                    <outlet property="postImageView" destination="Noc-0e-dYn" id="yt9-DV-JTF"/>
                                     <outlet property="repliesLabel" destination="ICK-Cs-mz1" id="XjR-8z-5Sz"/>
                                     <outlet property="stickyLabel" destination="jvb-Gt-mMF" id="yyw-Cu-Kti"/>
                                     <outlet property="subject" destination="QqI-XM-PgE" id="rWS-NW-I8K"/>
@@ -887,6 +887,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7wT-NZ-hw4"/>
+        <segue reference="e61-md-pOS"/>
     </inferredMetricsTieBreakers>
 </document>

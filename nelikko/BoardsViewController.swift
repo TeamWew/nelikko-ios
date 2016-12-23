@@ -13,7 +13,6 @@ import RealmSwift
 
 let FAV = "favoriteBoards"
 
-
 class BoardsViewController: UITableViewController {
 
     var boards = [Board]()
@@ -23,7 +22,7 @@ class BoardsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        BoardsAPI.getAllWithCallBack() { [weak self] (boards: [Board]) in
+        BoardsAPI.getAllWithCallBack { [weak self] (boards: [Board]) in
             self?.boards = boards
             self?.refreshFavorites()
             self?.tableView.reloadData()
@@ -60,7 +59,7 @@ class BoardsViewController: UITableViewController {
             return nil
         }
     }
-    
+
     func indexOfFavorite(_ identifier: String) -> Int {
         var i = 0
         for (x, b) in self.favorites.enumerated() {
@@ -130,8 +129,7 @@ class BoardsViewController: UITableViewController {
 
     //MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "ThreadsSegue")
-        {
+        if segue.identifier == "ThreadsSegue" {
             let destinationVC = segue.destination as! ThreadsViewController
             destinationVC.board = self.selectedBoard
             self.selectedBoard = nil

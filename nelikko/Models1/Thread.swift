@@ -14,7 +14,7 @@ import CoreData
 class Thread: NSManagedObject {
     
     @NSManaged var no: Int16
-    @NSManaged var last_modified: Int16
+    @NSManaged var lastModified: Int16
 
     @NSManaged var board: NSSet // Relation
     @NSManaged var posts: NSSet // Relation

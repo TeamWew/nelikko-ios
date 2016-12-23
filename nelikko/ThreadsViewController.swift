@@ -22,7 +22,8 @@ class ThreadsViewController: UITableViewController {
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.backgroundColor = UIColor.white
         self.refreshControl?.tintColor = UIColor.green
-        self.refreshControl?.addTarget(self, action: #selector(ThreadsViewController.reloadThreads), for: UIControlEvents.valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(ThreadsViewController.reloadThreads),
+                                                for: UIControlEvents.valueChanged)
 
         self.navBar.title = self.board?.titleString
         self.reloadThreads()
@@ -45,9 +46,9 @@ class ThreadsViewController: UITableViewController {
         performSegue(withIdentifier: "PostsSegue", sender: self)
         self.tableView.deselectRow(at: indexPath, animated: false)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "PostsSegue") {
+        if segue.identifier == "PostsSegue" {
             let destinationVC = segue.destination as? PostsViewController
             destinationVC?.thread = self.selectedThread
             self.selectedThread = nil
@@ -55,26 +56,28 @@ class ThreadsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ThreadCell", for: indexPath) as! ThreadOPCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThreadCell",
+                                                                  for: indexPath) as? ThreadOPCell else {
+            return UITableViewCell()
+        }
 
         let requestedThread = self.threads[(indexPath as NSIndexPath).row]
         if let sticky = requestedThread.op.sticky {
             cell.stickyLabel.isHidden = !sticky
-        }
-        else {
+        } else {
             cell.stickyLabel.isHidden = true
         }
+
         if requestedThread.op.postImage == nil {
             cell.postImageView.image = nil
             if requestedThread.op.tim != nil {
                 ImageAPI.getThumbnailImage(forPost: requestedThread.op) { [weak cell, weak requestedThread] (data: Data) in
-                        let image = UIImage(data: data)
-                        requestedThread?.op.postImage = image
-                        DispatchQueue.main.sync { cell?.postImageView?.image = requestedThread?.op.postImage }
+                    let image = UIImage(data: data)
+                    requestedThread?.op.postImage = image
+                    DispatchQueue.main.sync { cell?.postImageView?.image = requestedThread?.op.postImage }
                 }
             }
-        }
-        else {
+        } else {
             cell.postImageView?.image = requestedThread.op.postImage
         }
 
@@ -87,4 +90,3 @@ class ThreadsViewController: UITableViewController {
         return cell
     }
 }
-

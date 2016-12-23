@@ -11,7 +11,7 @@ import Foundation
 import ObjectMapper
 
 class BoardsAPI {
-    
+
     static let url = "https://a.4cdn.org/boards.json"
 
     class func getAllWithCallBack(_ completion: (([Board]) -> Void)!) {

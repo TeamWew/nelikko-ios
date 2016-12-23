@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import Agrume
 
-class PostsViewController : UITableViewController {
+class PostsViewController: UITableViewController {
     var thread: Thread?
     var postLocationMap = [Int: IndexPath]()
     var posts = [Post]()
@@ -25,7 +25,8 @@ class PostsViewController : UITableViewController {
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.backgroundColor = UIColor.white
         self.refreshControl?.tintColor = UIColor.green
-        self.refreshControl?.addTarget(self, action: #selector(PostsViewController.reloadThread), for: UIControlEvents.valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(PostsViewController.reloadThread),
+                                                for: UIControlEvents.valueChanged)
         self.navBar.title = "nelikko"
 
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -44,7 +45,7 @@ class PostsViewController : UITableViewController {
         ThreadAPI.getPosts(forThread: thread, withCallback: getPostsCallback)
     }
 
-    func scrollToPost(_ number:Int) {
+    func scrollToPost(_ number: Int) {
         guard let indexPathFound = self.postLocationMap[number] else { return }
         self.tableView.scrollToRow(at: indexPathFound, at: UITableViewScrollPosition.top, animated: true)
     }

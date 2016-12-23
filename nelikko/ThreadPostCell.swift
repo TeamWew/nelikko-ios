@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class ThreadPostCell : UITableViewCell {
+class ThreadPostCell: UITableViewCell {
 
     var imageUrl: String?
     var lastKnownPosition: Double?

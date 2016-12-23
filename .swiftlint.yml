@@ -1,2 +1,7 @@
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
+disabled_rules: # rule identifiers to exclude from running
+  - variable_name
+  - force_cast
+  - force_try
+  - line_length
