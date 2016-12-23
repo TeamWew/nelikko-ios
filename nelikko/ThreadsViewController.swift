@@ -65,17 +65,17 @@ class ThreadsViewController: UITableViewController {
             cell.stickyLabel.isHidden = true
         }
         if requestedThread.op.postImage == nil {
-            cell.opImageView.image = nil
+            cell.postImageView.image = nil
             if requestedThread.op.tim != nil {
                 ImageAPI.getThumbnailImage(forPost: requestedThread.op) { [weak cell, weak requestedThread] (data: Data) in
                         let image = UIImage(data: data)
                         requestedThread?.op.postImage = image
-                        DispatchQueue.main.sync { cell?.opImageView?.image = requestedThread?.op.postImage }
+                        DispatchQueue.main.sync { cell?.postImageView?.image = requestedThread?.op.postImage }
                 }
             }
         }
         else {
-            cell.opImageView?.image = requestedThread.op.postImage
+            cell.postImageView?.image = requestedThread.op.postImage
         }
 
         cell.firstComment.attributedText = requestedThread.op.attributedComment
