@@ -41,10 +41,6 @@
 		294B15551D8E937B004E533D /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 294B152D1D8E9191004E533D /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		294B15561D8E937B004E533D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 294B152E1D8E9191004E533D /* RealmSwift.framework */; };
 		294B15571D8E937B004E533D /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 294B152E1D8E9191004E533D /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		294B15581D8E937B004E533D /* Siesta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 294B152F1D8E9191004E533D /* Siesta.framework */; };
-		294B15591D8E937B004E533D /* Siesta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 294B152F1D8E9191004E533D /* Siesta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		294B155A1D8E937B004E533D /* SiestaUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 294B15301D8E9191004E533D /* SiestaUI.framework */; };
-		294B155B1D8E937B004E533D /* SiestaUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 294B15301D8E9191004E533D /* SiestaUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		294B155E1D8E95AA004E533D /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294B155D1D8E95AA004E533D /* ImageAPI.swift */; };
 		294B155F1D8E95AA004E533D /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294B155D1D8E95AA004E533D /* ImageAPI.swift */; };
 		294B15601D8E95AA004E533D /* ImageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294B155D1D8E95AA004E533D /* ImageAPI.swift */; };
@@ -112,8 +108,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				294B15551D8E937B004E533D /* Realm.framework in Embed Frameworks */,
-				294B15591D8E937B004E533D /* Siesta.framework in Embed Frameworks */,
-				294B155B1D8E937B004E533D /* SiestaUI.framework in Embed Frameworks */,
 				294B15571D8E937B004E533D /* RealmSwift.framework in Embed Frameworks */,
 				294B15531D8E937B004E533D /* ObjectMapper.framework in Embed Frameworks */,
 				294B154F1D8E937B004E533D /* Agrume.framework in Embed Frameworks */,
@@ -171,8 +165,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				294B15541D8E937B004E533D /* Realm.framework in Frameworks */,
-				294B15581D8E937B004E533D /* Siesta.framework in Frameworks */,
-				294B155A1D8E937B004E533D /* SiestaUI.framework in Frameworks */,
 				294B15561D8E937B004E533D /* RealmSwift.framework in Frameworks */,
 				294B15521D8E937B004E533D /* ObjectMapper.framework in Frameworks */,
 				294B154E1D8E937B004E533D /* Agrume.framework in Frameworks */,
@@ -322,6 +314,7 @@
 				1E0B5DDF1BE2AA5F00766347 /* Frameworks */,
 				1E0B5DE01BE2AA5F00766347 /* Resources */,
 				294B155C1D8E937B004E533D /* Embed Frameworks */,
+				2941125A1E0DADCE00410701 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -444,6 +437,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2941125A1E0DADCE00410701 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1E0B5DDE1BE2AA5F00766347 /* Sources */ = {
