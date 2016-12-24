@@ -94,8 +94,7 @@ class Post: Mappable {
     lazy var style: PostStyle = {
         if self.tim == nil {
             return .TextOnly
-        }
-        else if self.com == nil && self.tim != nil {
+        } else if self.com == nil && self.tim != nil {
             return .ImageOnly
         }
         return .ImageWithText

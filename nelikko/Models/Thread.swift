@@ -16,9 +16,8 @@ class Thread {
     var last_modified: Int?
     var tim: String?
 
-
     var posts: [Post]? // Relation
-    
+
     init(op: Post, board: Board, no: Int) {
         self.op = op
         self.board = board

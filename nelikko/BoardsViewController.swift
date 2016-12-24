@@ -61,13 +61,10 @@ class BoardsViewController: UITableViewController {
     }
 
     func indexOfFavorite(_ identifier: String) -> Int {
-        var i = 0
-        for (x, b) in self.favorites.enumerated() {
-            if b.id == identifier {
-                i = x
-            }
+        guard let idx = self.favorites.enumerated().filter({ $1.id == identifier }).first?.offset else {
+            return 0
         }
-        return i
+        return idx
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,9 +94,9 @@ class BoardsViewController: UITableViewController {
         let boardIdentifier = boardString!.characters.split(separator: "/").map(String.init).first
 
         let realm = try! Realm()
-        if (isFavorited(boardIdentifier!)) {
+        if isFavorited(boardIdentifier!) {
 
-            let unFavoriteAction = UITableViewRowAction(style: .normal, title: "Unfavorite") { (rowAction:UITableViewRowAction, indexPath:IndexPath) -> Void in
+            let unFavoriteAction = UITableViewRowAction(style: .normal, title: "Unfavorite") { _ in
                 let b = realm.dynamicObjects("FavoritedBoard").filter("identifier == '\(boardIdentifier!)'").first!
                 try! realm.write { realm.delete(b) }
                 let i = self.indexOfFavorite(boardIdentifier!)
@@ -109,9 +106,8 @@ class BoardsViewController: UITableViewController {
             }
             unFavoriteAction.backgroundColor = UIColor(red: 252.0/255.0, green: 0, blue: 0, alpha: 1)
             return [unFavoriteAction]
-        }
-        else {
-            let favoriteAction = UITableViewRowAction(style: .normal, title: "Favorite") { (rowAction:UITableViewRowAction, indexPath:IndexPath) -> Void in
+        } else {
+            let favoriteAction = UITableViewRowAction(style: .normal, title: "Favorite") { _ in
                 try! realm.write {
                     let b = FavoritedBoard()
                     b.identifier = boardIdentifier!
@@ -127,7 +123,7 @@ class BoardsViewController: UITableViewController {
         }
     }
 
-    //MARK: Segue
+    // MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ThreadsSegue" {
             let destinationVC = segue.destination as! ThreadsViewController
@@ -136,16 +132,14 @@ class BoardsViewController: UITableViewController {
         }
     }
 
-    //MARK: Favorites utilities
+    // MARK: Favorites utilities
     func isFavorited(_ identifier: String) -> Bool {
         let realm = try! Realm()
 
         return !realm.dynamicObjects("FavoritedBoard").filter("identifier == '\(identifier)'").isEmpty
-
     }
 
     @IBAction func testshit(_ sender: AnyObject) {
         performSegue(withIdentifier: "ZooSegue", sender: sender)
     }
 }
-

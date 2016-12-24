@@ -12,7 +12,7 @@ import CoreData
 
 @objc(Board)
 class Board: NSManagedObject {
-    
+
     @NSManaged var board: String
     @NSManaged var bump_limit: Int16
     @NSManaged var image_limit: Int16
@@ -25,6 +25,6 @@ class Board: NSManagedObject {
     @NSManaged var per_page: Int16
     @NSManaged var title: String
     @NSManaged var ws_board: Bool
-    
+
     @NSManaged var threads: NSSet // Relation
 }
