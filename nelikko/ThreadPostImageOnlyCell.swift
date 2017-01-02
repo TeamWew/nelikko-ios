@@ -11,4 +11,5 @@ import Foundation
 
 class ThreadPostImageOnlyCell: ThreadPostCell, PostCellWithImage {
     @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet var progressView: UIProgressView!
 }

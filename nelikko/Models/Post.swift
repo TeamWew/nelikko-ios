@@ -77,6 +77,12 @@ class Post: Mappable {
 
     var imageNameString: String? { return "\(tim!)\(ext!)" }
     var thumbnailNameString: String? { return "\(tim!)s.jpg" }
+    var imageURL: String {
+        return "https://i.4cdn.org/\(thread!.board!.id!)/\(imageNameString!)"
+    }
+    var thumbnailURL: String {
+        return "https://i.4cdn.org/\(thread!.board!.id!)/\(thumbnailNameString!)"
+    }
 
     lazy var attributedComment: NSAttributedString = {
         guard let comment = self.com else { return NSAttributedString() }
@@ -91,23 +97,23 @@ class Post: Mappable {
         return attributedString
     }()
 
-    lazy var style: PostStyle = {
+    var style: PostStyle {
         if self.tim == nil {
             return .TextOnly
         } else if self.com == nil && self.tim != nil {
             return .ImageOnly
         }
         return .ImageWithText
-    }()
+    }
 }
 
 private extension String {
     var html2AttributedString: NSAttributedString? {
         guard let data = data(using: .utf8) else { return nil }
-        return try? NSAttributedString(data: data,
-                                       options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                                                 NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue],
-                                       documentAttributes: nil)
+        let opts: [String: Any] = [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                    NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue]
+
+        return try? NSAttributedString(data: data, options: opts, documentAttributes: nil)
     }
     var html2String: String {
         return html2AttributedString?.string ?? ""
@@ -117,9 +123,7 @@ private extension String {
         guard let regex = try? NSRegularExpression(pattern: regex, options: []) else { return [] }
 
         let nsString = self as NSString
-        let results = regex.matches(in: self,
-                                    options: [],
-                                    range: NSMakeRange(0, nsString.length))
+        let results = regex.matches(in: self, options: [], range: NSMakeRange(0, nsString.length))
 
         return results.map { ($0.range, nsString.substring(with: $0.range) as NSString ) }
     }

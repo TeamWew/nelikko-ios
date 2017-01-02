@@ -57,11 +57,12 @@ class ThreadsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ThreadCell",
-                                                                  for: indexPath) as? ThreadOPCell else {
+                                                                  for: indexPath) as? ThreadOPCell
+        else {
             return UITableViewCell()
         }
 
-        let requestedThread = self.threads[(indexPath as NSIndexPath).row]
+        let requestedThread = self.threads[indexPath.row]
         if let sticky = requestedThread.op.sticky {
             cell.stickyLabel.isHidden = !sticky
         } else {
@@ -70,15 +71,22 @@ class ThreadsViewController: UITableViewController {
 
         if requestedThread.op.postImage == nil {
             cell.postImageView.image = nil
+
             if requestedThread.op.tim != nil {
-                ImageAPI.getThumbnailImage(forPost: requestedThread.op) { [weak cell, weak requestedThread] (data: Data) in
-                    let image = UIImage(data: data)
-                    requestedThread?.op.postImage = image
-                    DispatchQueue.main.sync { cell?.postImageView?.image = requestedThread?.op.postImage }
-                }
+                cell.progressView.isHidden = false
+
+                Alamofire.request(requestedThread.op.thumbnailURL)
+                    .downloadProgress(closure: { [weak cell] d in
+                        cell?.progressView.progress = Float(d.fractionCompleted)
+                    })
+                    .responseData(completionHandler: { [weak cell] in
+                        requestedThread.op.thumbnail = UIImage(data: $0.data!)
+                        cell?.progressView.isHidden = true
+                        DispatchQueue.main.async { cell?.postImageView?.image = requestedThread.op.thumbnail }
+                    })
             }
         } else {
-            cell.postImageView?.image = requestedThread.op.postImage
+            cell.postImageView?.image = requestedThread.op.thumbnail
         }
 
         cell.firstComment.attributedText = requestedThread.op.attributedComment

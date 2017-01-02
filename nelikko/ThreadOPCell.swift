@@ -11,6 +11,7 @@ import Foundation
 
 protocol PostCellWithImage: class {
     var postImageView: UIImageView! { get set }
+    var progressView: UIProgressView! { get }
 }
 
 class ThreadOPCell: UITableViewCell, PostCellWithImage {
@@ -22,6 +23,7 @@ class ThreadOPCell: UITableViewCell, PostCellWithImage {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet var stickyLabel: UILabel!
 
+    @IBOutlet var progressView: UIProgressView!
     var imageUrl: String?
 
     override func awakeFromNib() {

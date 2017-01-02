@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import Agrume
+import Alamofire
 
 class PostsViewController: UITableViewController {
     var thread: Thread?
@@ -22,13 +23,15 @@ class PostsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl?.backgroundColor = UIColor.white
-        self.refreshControl?.tintColor = UIColor.green
-        self.refreshControl?.addTarget(self, action: #selector(PostsViewController.reloadThread),
-                                                for: UIControlEvents.valueChanged)
-        self.navBar.title = "nelikko"
+        self.refreshControl = {
+            let r = UIRefreshControl()
+            r.backgroundColor = .white
+            r.tintColor = .green
+            r.addTarget(self, action: #selector(reloadThread), for: .valueChanged)
+            return r
+        }()
 
+        self.navBar.title = "nelikko"
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44.0
         self.reloadThread()
@@ -47,7 +50,7 @@ class PostsViewController: UITableViewController {
 
     func scrollToPost(_ number: Int) {
         guard let indexPathFound = self.postLocationMap[number] else { return }
-        self.tableView.scrollToRow(at: indexPathFound, at: UITableViewScrollPosition.top, animated: true)
+        self.tableView.scrollToRow(at: indexPathFound, at: .top, animated: true)
     }
 
     func scrollToExitedPost() {
@@ -64,10 +67,10 @@ class PostsViewController: UITableViewController {
 
         self.backButton = {
             let screenSize: CGRect = UIScreen.main.bounds
-            let button: UIButton = UIButton(type: UIButtonType.custom) as UIButton
+            let button: UIButton = UIButton(type: .custom)
             button.frame = CGRect(x: screenSize.width - 50, y: screenSize.height - 50, width: 30, height: 30)
-            button.addTarget(self, action:#selector(PostsViewController.scrollToExitedPost), for: UIControlEvents.touchUpInside)
-            button.backgroundColor = UIColor.white
+            button.addTarget(self, action:#selector(scrollToExitedPost), for: .touchUpInside)
+            button.backgroundColor = .white
             button.layer.borderWidth = 1
             button.layer.cornerRadius = 10
             button.layer.borderColor = UIColor.lightGray.cgColor
@@ -83,7 +86,7 @@ class PostsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let post = self.posts[indexPath.row]
-        guard let height = post.h, let width = post.w, post.com == nil else {
+        guard post.style == .ImageOnly, let height = post.h, let width = post.w else {
             // Let autolayout et al. handle the estimated height in case the post isn't an image-only post
             return super.tableView(tableView, heightForRowAt: indexPath)
         }
@@ -131,17 +134,33 @@ class PostsViewController: UITableViewController {
     }
 
     private func getImage(forCell cell: PostCellWithImage?, post: Post) {
-        ImageAPI.getImage(forPost: post) {[weak cell] (data: Data) in
-            post.postImage = UIImage(data: data)
-            DispatchQueue.main.async { cell?.postImageView?.image = post.postImage }
-        }
+        cell?.progressView.isHidden = false
+        cell?.progressView.setProgress(0, animated: false)
+
+        Alamofire.request(post.imageURL)
+            .downloadProgress(closure: { [weak cell] d in
+                cell?.progressView.progress = Float(d.fractionCompleted)
+            })
+            .responseData(completionHandler: { [weak cell] in
+                post.postImage = UIImage(data: $0.data!)
+                cell?.progressView.isHidden = true
+                DispatchQueue.main.async { cell?.postImageView?.image = post.postImage }
+            })
     }
 
     private func getThumbnailImage(forCell cell: PostCellWithImage?, post: Post) {
-        ImageAPI.getThumbnailImage(forPost: post) {[weak cell] (data: Data) in
-            post.thumbnail = UIImage(data: data)
-            DispatchQueue.main.async { cell?.postImageView?.image = post.thumbnail }
-        }
+        cell?.progressView.isHidden = false
+        cell?.progressView.setProgress(0, animated: false)
+
+        Alamofire.request(post.thumbnailURL)
+            .downloadProgress(closure: { [weak cell] d in
+                cell?.progressView.progress = Float(d.fractionCompleted)
+            })
+            .responseData(completionHandler: { [weak cell] in
+                post.thumbnail = UIImage(data: $0.data!)
+                cell?.progressView.isHidden = true
+                DispatchQueue.main.async { cell?.postImageView?.image = post.thumbnail }
+            })
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -166,9 +185,5 @@ extension PostsViewController: UITextViewDelegate {
         self.locationStack.append(self.tableView.contentOffset)
         self.createBackButton()
         return true
-    }
-
-    func paska<T>(lol: T) -> T {
-        return lol
     }
 }
